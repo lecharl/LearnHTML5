@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>
+		.item{
+            background: green;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            line-height: 100px;
+            margin: 5px;
+        }
+		.item span{
+            font-size: 25px;
+            color: white;
+            font-weight: bold;
+        }
+
+	</style>
+</head>
+<body>
+	<!-- createElements -->
+	<!-- createTextNode -->
+	<h1>요소 생성 및 제거</h1>
+
+	<h3>동적으로 요소 생성</h3>
+
+	<button id="btn">요소생성</button>
+	<div id="area1">
+
+	</div>
+
+	<script>
+		$(function(){
+			$("#btn").click(function(){
+				//1. 문자열로 요소 만들기
+				let strEl = '<p>문자열</p>'
+
+				//2. DOM 생성(createElement, createTextNode)
+				let domEl = document.createElement('p')	//<p></p> 태그 생성
+				let textEl = document.createTextNode('dom')	//'dom' 문자열 생성
+
+				domEl.appendChild(textEl);
+				$('#area1').append(domEl);
+
+				//3. jQuery 로 만들기
+				let jEl = $('<h1></h1>').text('제이쿼리로만듦ㅋㅋ')
+
+				$('#area1').append(jEl);
+			})
+		})
+	</script>
+
+	<hr><hr>
+
+	<h3>삽입 관련 메소드 part1</h3>
+	<p>
+		새로운 요소 추가하는 메소드 <br>
+
+	<h4>$(A).append(B)</h4>
+	A 요소 내부의 뒷부분에 B 추가 (자손)
+
+	<h4>$(A).prepend(B)</h4>
+	A 요소 내부의 앞부분에 B 추가 (자손)
+
+	<h4>$(A).after(B)</h4>
+	A 요소 뒷부분에 B 추가 (형제)
+
+	<h4>$(A).before(B)</h4>
+	A 요소 앞부분에 B 추가 (형제)
+	</p>
+
+	<h1 id="t1"><span>A</span></h1>
+	<h1 id="t2"><span>A</span></h1>
+	<h1 id="t3"><span>A</span></h1>
+	<h1 id="t4"><span>A</span></h1>
+
+	<script>
+		$(function(){
+			//part1
+			$('#t1').append('<span>B</span>');
+			$('#t2').prepend('<span>B</span>');
+
+			//형제레벨
+			$('#t3').before('<span>B</span>');
+			$('#t4').after('<span>B</span>');
+		})
+	</script>
+
+
+
+	<h3>삽입 관련 메소드 part2</h3>
+    <p>
+        새로운 요소 추가하는 메소드 <br>
+
+        <h4>$(B).appendTo(A)</h4>
+        A 요소 내부의 뒷부분에 B 추가 (자손)
+
+        <h4>$(B).prependTo(A)</h4>
+        A 요소 내부의 앞부분에 B 추가 (자손)
+
+        <h4>$(B).insertAfter(A)</h4>
+        A 요소 뒷부분에 B 추가 (형제)
+
+        <h4>$(B).insertBefore(A)</h4>
+        A 요소 앞부분에 B 추가 (형제)
+    </p>
+
+    <h3>요소객체 복제 메소드</h3>
+    <p>
+        변수 = $("선택자").clone(true|false)
+        true|false : 복제할 요소의이벤트까찌 복사할건지? (default:false)
+    </p>
+
+	<hr><hr>
+
+	<h3>요소객체 복제 메소드</h3>
+	<p>
+		변수 = $("선택자").clone(true|false)
+		true|false : 복제할 요소의이벤트까찌 복사할건지? (default:false)
+	</p>
+
+	<div id="clone-test">
+		<!-- 복제할 요소 -->
+		<div id="item1" class="item">
+			<span>안녕</span>
+		</div>
+		<!-- 스타일 작성 ㄱㄱ (ref : 복제할요소css) -->
+	</div>
+
+	<button id="clone">복제</button>
+	<div id="clone-result">
+
+	</div>
+
+	<script>
+		$(function(){
+			//복제할 요소에다가 이벤트 걸기
+			//hover는 mouseenter, mouseout 둘다니까 두 함수를 넣어야 함
+			// $('.item').hover(
+			// 	()=>$(this).addClass('purple'),
+			// 	()=>$(this).removeClass('purple'));
+
+			// $('#clone')
+			// $('#clone-result').append($('#item1')).clone();
+
+			const copy = $('#item1').clone(false);
+			$('#clone-result').append(copy);
+		})
+	</script>
+
+	<!--
+		empty : 하위 요소 삭제
+		remove : 없앰
+		detach : 없앰
+	-->
+
+	<hr><hr>
+
+	<h3>요소 객체 제거 및 잘라내기 함수</h3>
+	<p>
+		$("선택자").empty() : 하위 요소들 제거 <br><br>
+
+		$("선택자").remove|detach() : 제거 후 해당 요소 반환 (잘라내기) <br>
+		remove vs detach : 이벤트 가져오는지 여부 (이벤트 가져오려면 detach)
+	</p>
+
+	<div id="remove-test">
+		<!-- 제거할 요소 -->
+		<div id="item2" class="item">
+			<span>안녕</span>
+		</div>
+	</div>
+
+	<button id='empty'>empty</button>
+	<button id="remove">remove</button>
+	<button id="detach">detach</button>
+
+	<div id="remove-result">
+
+	</div>
+
+	<script>
+		$(function(){
+			//이벤트걸기 : 안녕박스를 눌러야 alert이벤트
+			$('#item2').click(function(){
+				alert('clicked~~~')
+			})
+
+			//empty
+			$('#empty').click(function(){
+				$('#item2').empty();
+			})
+
+			//remove : 없앤 객체를 변수에 담을 수 있다.
+			//e1에 담은 상태
+			$('#remove').click(function () {
+				const e1 = $('#item2').remove();
+				$('#remove-result').append(e1);
+			})
+
+			//detach
+			$('#detach').click(function () {
+				const e2 = $('#item2').detach();
+				$('#remove-result').append(e2);
+			})
+
+		})
+	</script>
+
+
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+</body>
+</html>

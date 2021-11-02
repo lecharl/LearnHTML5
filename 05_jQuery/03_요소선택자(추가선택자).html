@@ -56,17 +56,143 @@
 		- 선택자[속성*] : 포함 <br>
 	</p>
 
-	<input type="text">  <br>
+	<!-- <input type="text">  <br>
 	<input type="number" class="test test1"> <br>
 	<input type="radio"> <br>
 	<input type="checkbox"> <br>
-	<input type="button" value="btn~~~" class="test2"> <br>
+	<input type="button" value="btn~~~" class="test2"> <br> -->
 
 	<script>
 		$(function(){
 			$('input[type=text]').val('zzz');
 			$('input[class]').css('background', 'red');
 		})
+
+		$(function () {
+				$("input[class]").css("backgroundColor", "red");
+				$("input[type=text]").val("changed v111");
+				$("input[class~=test]").val("1234");
+				$("input[type^=ra]").attr("checked", true);
+				$("input[type$=box]").attr("checked", true);
+				// $("input[class*=st2]").css({width:"100px", height:"100px"});
+				// $("input[class*=st2]").val("val 로 바꿈 ㅋㅋ");
+				$("input[class*=st2]").css({ width: "100px", height: "100px" }).val("val 로 바꿈 ㅋㅋ");
+			})
+
 	</script>
+
+	<hr><hr>
+
+	<h3>입력양식 선택자(input 태그 type 속성에 따라 선택)</h3>
+
+	텍스트상자 : <input type="text"> <br>
+	버튼 : <input type="button"> <br>
+	체크 : <input type="checkbox"> <br>
+	파일 : <input type="file"> <br>
+	비번 : <input type="password"> <br>
+	라디오 : <input type="radio"> <br>
+	리셋 : <input type="reset"> <br>
+	제출 : <input type="submit"> <br>
+	<!-- ***$() : 배열 형태로 가져와서 첫번째 요소를 가져온다!!!! -->
+
+
+	<script>
+		$(function(){
+			//input 중에서 type이 text인 것 가져오기
+			$(':text').css('backgroundColor', 'tomato');
+			// $(':button').css({width: '100px', height: '100px'}).val('버튼임ㅋㅋ')
+			$(':checkbox').css({ width: '100px', height: '100px' }).attr('checked', true);
+			$(':file').css('backgroundColor', 'violet');
+			$(':password').css('backgroundColor', 'yellow');
+			$(':radio').css({ width: '100px', height: '100px' }).attr('checked', false);
+			$(':reset').css({backgroundColor: 'grey', border: 'none'}).val('취소!!');
+
+			$(':submit').click(()=>alert('submit 클릭!!'))
+			//요거 아래 두개가 안되는데 봐주세여 ㅠ_ㅠ
+			$(':submit').mouseout(function () {
+				$(this).css('backgroundColor', 'red');
+			})
+			$(':submit').mouseenter(function () {
+				$(this).css('backgroundColor', 'purple');
+			})
+			//선생님 03번 추가선택자 파일에서, mouseenter와 mouseout 메소드를 적용하는 거에서 애로우펑션 형식으로 써봤는데 안되더라구요 ㅠ_ㅠ 왜 그런지 알 수 있을까요???
+			// $(':submit').mouseenter(()=>$(this).css('backgroundColor', 'purple'))
+			// $(':submit').mouseout(()=>$(this).css('backgroundColor', 'red'))
+		})
+	</script>
+
+	<hr><hr>
+
+	<h3>상태(checked, selected, disabled, enabled) 선택자</h3>
+
+	<h4>checked 상태 선택자 (radio, checkbox)</h4>
+	취미 :
+	<input type="checkbox" name="hobby" , value="game">
+	<input type="checkbox" name="hobby" , value="movie">
+	<input type="checkbox" name="hobby" , value="music">
+	<br>
+
+	<button type="button" id="btn">커져라~~~~~</button>
+
+	<script>
+		$(function(){
+			//버튼 클릭 시 현재 checked 상태인 요소 선택해서 스타일 추가
+			$('#btn').click(function(){
+				$('input:checked').css({width: '50px', height: '50px'})
+			})
+
+			//체크박스 클릭할 때마다 이벤트 발생시키기
+			$(':checkbox').change(function(){
+
+				//this의 property가 checked 를 가지고 있으면
+				if ($(this).prop("checked")) {
+					$(this).css({ width: "50px", height: "50px" });
+				} else {
+					$(this).css({ width: "", height: "" });
+				}
+			})
+		})
+	</script>
+
+	<br><br>
+
+	<h4>selected 상태 선택자</h4>
+
+	국적 :
+	<select name="national">
+		<option value="x">선택안함</option>
+		<option value="ko">한국</option> <!-- value 비어있으면 text가 값으로 넘어감 -->
+		<option value="us">미국</option>
+		<option value="uk">영국</option>
+	</select>
+
+	<button type="button" onclick="test();">확인</button>
+	<br>
+	선택한 나라 : <span id="result"></span>
+
+	<script>
+		function test(){
+			//selected 요소 가져오기
+			const x = $('option:selected').val();
+
+			//result 에다가 값 넣기
+			$('#result').html(x);
+		}
+	</script>
+
+	<br><br>
+
+	<h4> - disabled, enabled 상태 선택자 (input, button 등)</h4>
+
+	<button type="button">활성화버튼</button>
+	<button type="button" disabled>비활성화버튼</button>
+
+	<script>
+		$(function(){
+			$('button:enabled').css('backgroundColor', 'violet');
+			$('button:disabled').css('backgroundColor', 'green');
+		})
+	</script>
+
 </body>
 </html>
