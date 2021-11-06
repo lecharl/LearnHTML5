@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 	<link rel="stylesheet" href="./main.css">
 </head>
 <body>
@@ -13,10 +14,10 @@
 
 	<div class="alert-box" id='alert'>
 		<p>Alert 박스</p>
-		<button onclick="opClAlert('none')">닫기</button>
+		<button id="close">닫기</button>
 	</div>
-	<button onclick="opClAlert('block'), boxInner('아이디')">버튼1</button>
-	<button onclick="opClAlert('block'), boxInner('비밀번호')">버튼2</button>
+	<button onclick="opAlert('아이디')">버튼1</button>
+	<button onclick="opAlert('비밀번호')">버튼2</button>
 
 	<script>
 		document.getElementById('hello').innerHTML = '안녕'
@@ -24,14 +25,21 @@
 		document.getElementById('hello').style.fontSize = '30px'
 		document.getElementById('hi').style.color = 'red'
 
-		//파라미터를 잘 쓰면 코드 양이 줄어든다.
-		function opClAlert(prVal) {
-			document.getElementById('alert').style.display = prVal;
-		}
+		document.getElementById('close').addEventListener('click', function(){
+			document.getElementById('alert').style.display = 'none';
+		})
 
-		function boxInner(text) {
+		function opAlert(text) {
+			document.getElementById('alert').style.display = 'block';
 			document.querySelector('#alert>p').innerHTML = text+'를 입력하세요.'
 		}
+		//파라미터를 잘 쓰면 코드 양이 줄어든다.
+		// function opClAlert(prVal) {
+		// 	document.getElementById('alert').style.display = prVal;
+		// }
+		// function boxInner(text) {
+		// 	document.querySelector('#alert>p').innerHTML = text+'를 입력하세요.'
+		// }
 
 	</script>
 </body>
