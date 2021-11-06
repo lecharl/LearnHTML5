@@ -1,0 +1,144 @@
+/* 속성 선택자 테스트 */
+/* div 중에 name 속성을 가지고 있는 태그를 선택한다. */
+/* div[name] {
+	background-color: orangered;
+} */
+
+/* div 중에 name 속성값이 name1과 일치하는 태그 */
+div[name=name1]{
+	background-color: orangered;
+}
+
+/* div 중에 name 속성값 안에 name1이 포함되어 있는 태그
+(단, 속성값이 띄어쓰기로 구분돼야 한다.*/
+div[name~=name1]{
+	background-color: yellow;
+}
+
+/* div 중에 class 속성값이 class로 시작되는 태그
+(단, `-`로 구분된다. */
+div[class|=class]{
+	background-color: springgreen;
+}
+
+/* div 중에 name 속성값이 name으로 시작되는 태그 */
+div[name^=name]{
+	background-color: blue;
+}
+
+/* div 중에 class 속성값이 class로 끝나는 태그 */
+div[class$=class]{
+	color: white;
+}
+
+/* div 중에 class 속성값이 i를 포함하는 태그 */
+div[class*=i]{
+	background-color: greenyellow;
+	color: red;
+}
+
+/* 클래스 div-class인 것 중 name 속성값에 name3이 포함되어 있는 경우
+(단, 속성값이 띄어쓰기로 구분*/
+.div-class[name~=name3]{
+	background-color: pink;
+}
+
+
+div[class=div-class][name~=name3] {
+	background-color: pink;
+}
+
+/* ------------------------------------------------------ */
+/* 자손 선택자와 후손 선택자 테스트 */
+#test1>h4{
+	background-color: orange;
+}
+
+#test1>ul>h4{
+	background-color: purple;
+}
+
+#test1 li{
+	color: red;
+}
+
+#test1>ul>li{
+	background-color: salmon;
+}
+
+/* ------------------------------------------------ */
+/* 동위 선택자 테스트*/
+#div-test{
+	background-color: red;
+}
+
+/* a+b : a 선택자 바로 뒤에 있는 b 선택자 단 한 개만 스타일 적용 */
+#div-test+div{
+	background-color: seagreen;
+}
+
+/* a~b : 선택자 뒤에 있는 모든 b 선택자에 스타일 적용 */
+#div-test~div{
+	background-color: orange;
+	color: white;
+}
+
+/* --------------------------------------------------- */
+/* 반응 선택자 테스트 */
+#active-test, #hover-test{
+	background-color: yellowgreen;
+	width: 300px;
+	height: 300px;
+}
+
+#active-test:active{
+	background-color: yellow;
+	color: red;
+}
+
+#hover-test:hover{
+	background-color: teal;
+	color: white;
+	cursor: pointer;
+}
+
+#hover-test:active{
+	background-color: cornflowerblue;
+	color: red;
+}
+
+/* ------------------------------------------ */
+/* 상태 선택자 테스트 */
+input[type=checkbox]:checked{
+	width: 20px;
+	height: 20px;
+}
+
+input[type=checkbox]:checked label{
+	font-size: 1.5em;
+}
+/* +label 과 , label 은 다르다!!
+, label : 앞과는 독립적으로 -> 단순히 폰트사이즈가 커진다.
+*/
+
+#userId:focus, #userPwd:focus{
+	background-color: wheat;
+	border: 4px solid red;
+}
+
+option:enabled{
+	background-color: pink;
+	color: teal;
+}
+
+option:disabled{
+	background-color: greenyellow;
+}
+
+button:enabled{
+	color: pink;
+}
+
+button:disabled{
+	color: red;
+}
