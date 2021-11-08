@@ -1,0 +1,187 @@
+/* font-family 테스트*/
+/* 방법3. CSS 파일 안 맨위에 @import */
+@import url('https://fonts.googleapis.com/css2?family=Dokdo&display=swap');
+#ff1{
+	font-family: "궁서체";
+}
+
+#ff2{
+	font-family: "굴림체";
+}
+
+#ff3{
+	font-family: "없는글꼴", "궁서체ㅋㅋ", "굴림체";
+}
+
+#web-font{
+	font-family: 'Dokdo', cursive;
+	font-size: 2em;
+}
+
+/* font-size 테스트 */
+#size1{
+	font-size: 30px;
+}
+
+#size2{
+	font-size: 2em;
+}
+
+#size3{
+	font-size: 150%;
+}
+
+/* font-weight 테스트 */
+#fw1{
+	font-weight: bold;
+	/* bold : 700, 최고는 900 */
+	font-size: 2em;
+}
+
+#fw2{
+	font-weight: lighter;
+	font-size: 2em;
+}
+
+#fw3{
+	font-weight: bolder;
+	/* bolder : 아마 900? */
+	font-size: 2em;
+}
+
+/* font-variant 테스트 */
+
+#fv{
+	font-variant: small-caps;
+}
+
+/* font-style 테스트 */
+
+#fs1{
+	font-style: italic;
+	font-size: 2em;
+}
+
+#fs2{
+	font-style: oblique;
+	font-size: 2em;
+}
+
+/* color 테스트 */
+#c-name{
+	color: royalblue;
+}
+
+#c-16{
+	color: #44ffff;
+}
+
+#c-rgb{
+	color: rgb(194, 7, 163);
+}
+/* 0~255 */
+
+#c-rgba{
+	color: rgba(255, 0, 0, .6);
+}
+/* 네번째 거 : 투명도( 0(완전투명)~1(완전불투명)*/
+
+
+/* text-decoration 테스트 */
+#td1{
+	text-decoration: underline;
+}
+
+#td2{
+	text-decoration: line-through;
+}
+
+#td3{
+	text-decoration: overline;
+}
+
+#td4{
+	text-decoration: none;
+}
+
+/* text-transform 테스트*/
+#tt1{
+	text-transform: none;
+}
+#tt2{
+	text-transform: capitalize;
+}
+#tt3{
+	text-transform: uppercase;
+}
+#tt4{
+	text-transform: lowercase;
+}
+
+/* text-shadow 테스트 */
+#bg{
+	background-color: black;
+	margin: 30px;
+	padding: 50px;
+}
+
+#ts{
+	font-size: 100px;
+	font-weight: 900;
+	text-shadow: 0px 0px 10px #ccc,
+				0px -5px 4px #ff3,
+				2px -10px 6px #fd3,
+				-2px -15px 11px #f80,
+				2px -19px 18px #f20;
+	/* 양수 : 오른쪽 아래쪽 */
+	/* 음수 : 왼쪽 위쪽 */
+}
+
+/* letter-spacing */
+#ls{
+	letter-spacing: 10px;
+}
+
+
+/* word-spacing */
+#ws{
+	word-spacing: 10px;
+}
+
+/* ---------------------------------------------- */
+/* 문단 스타일 */
+/* text-align */
+#ta1{
+	text-align: left;
+}
+#ta2{
+	text-align: right;
+}
+#ta3{
+	text-align: center;
+}
+#ta4{
+	text-align: justify;
+}
+
+/* text-indent */
+#ti{
+	text-indent: 40px;
+}
+
+/* line-height */
+#lh{
+	line-height: 30px;
+}
+
+/* text-overflow */
+.over-class{
+	background-color: beige;
+	width: 500px;
+}
+
+#to{
+	white-space: nowrap;	/*줄바꿈 없애기*/
+	overflow: hidden;	/*삐져나가면 안보이게*/
+	text-overflow: ellipsis;
+}

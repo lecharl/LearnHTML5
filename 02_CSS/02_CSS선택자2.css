@@ -77,10 +77,10 @@ div[class=div-class][name~=name3] {
 	background-color: seagreen;
 }
 
-/* a~b : 선택자 뒤에 있는 모든 b 선택자에 스타일 적용 */
+/* a~b : a 선택자 뒤에 있는 모든 b 선택자에 스타일 적용 */
 #div-test~div{
-	background-color: orange;
-	color: white;
+	/* background-color: orange; */
+	/* color: white; */
 }
 
 /* --------------------------------------------------- */
@@ -142,3 +142,98 @@ button:enabled{
 button:disabled{
 	color: red;
 }
+
+/* ---------------------------------------- */
+
+/* 일반 구조 선택자 테스트 */
+/* 형제 관계 태그 중 첫번째 태그 선택 */
+#test2 p:first-child{
+	background-color: red;
+	color: white;
+}
+
+/* 형제 관계 태그 중 마지막 태그 선택 */
+/* 마지막 자식이 p태그가 아니어서 스타일이 적용되지 않는다. */
+#test2 p:last-child{
+	background-color: orange;
+	color: white;
+}
+
+/* 형제 관계 태그 중 앞에서 수열번 째 태그 선택 */
+/* 수식을 사용하거나 수식 대신 odd(홀수), even(짝수)를 대입할 수 있다. */
+/* #test2 p:nth-child(2n+1){ */
+#test2 p:nth-child(even){
+	background-color: yellowgreen;
+	color: white;
+}
+
+/* 형제 관계 태그 중 뒤에서 수열번 째 태그 선택 */
+#test2 p:nth-last-child(4){
+	background-color: skyblue;
+}
+
+
+/* ----------------------------------------- */
+/* 형태 구조 선택자 테스트 */
+/* 형제 관계 태그 중 첫번째 태그 선택 */
+#test3 p:first-of-type{
+	background-color: red;
+	color: white;
+}
+
+/* 형제 관계 태그 중 마지막 태그 선택 */
+#test3 p:last-of-type{
+	background-color: orange;
+	color: white;
+}
+
+/* 형제 관계 태그 중 뒤에서 수열번 째 태그 선택 */
+#test3 p:nth-of-type(2n){
+	background-color: yellowgreen;
+	color: white;
+}
+
+/* 형제 관계 태그 중 뒤에서 수열번 째 태그 선택 */
+#test3 p:nth-last-of-type(4){
+	background-color: skyblue;
+	color: white;
+}
+
+/* --------------------------------------- */
+/* 문자 선택자 테스트*/
+/* 첫번째 글자를 선택해서 스타일 적용 */
+#test4 p::first-letter{
+	font-size: 2em;
+}
+
+/* 첫번째 라인을 선택해서 스타일 적용 */
+#test4 p::first-line{
+	background-color: wheat;
+}
+
+/* 태그 앞에 위치하는 공간을 선택 */
+#test4 p::before{
+	content: "1.";
+}
+
+/* 태그 뒤에 위치하는 공간을 선택 */
+#test4 p::after{
+	content: "@@@@@@@@@@@@@@@@@@@@@@";
+}
+
+/*  */
+#test4 p::selection{
+	background-color: hotpink;
+	color: white;
+}
+
+/* ---------------------------------------- */
+/* 부정 선택자 테스트*/
+/* #test5 p:not(.p){
+	background-color: chocolate;
+} */
+
+#test5 p:not(:nth-child(even)){
+	background-color: coral;
+}
+/* 가상 클래스 선택자??? */
