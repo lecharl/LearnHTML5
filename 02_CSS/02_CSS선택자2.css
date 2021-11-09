@@ -221,7 +221,7 @@ button:disabled{
 	content: "@@@@@@@@@@@@@@@@@@@@@@";
 }
 
-/*  */
+/* 사용자가 드래그한 글자 선택 */
 #test4 p::selection{
 	background-color: hotpink;
 	color: white;
@@ -229,10 +229,12 @@ button:disabled{
 
 /* ---------------------------------------- */
 /* 부정 선택자 테스트*/
+/* 클래스명 p가 아닌 요소 선택 */
 /* #test5 p:not(.p){
 	background-color: chocolate;
 } */
 
+/* 짝수번째 요소가 p일 때 그것의 반대 요소 선택 */
 #test5 p:not(:nth-child(even)){
 	background-color: coral;
 }

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>레이아웃 스타일</title>
+	<link rel="stylesheet" href="./05_레이아웃스타일.css">
+</head>
+<body>
+	<h1>레이아웃 스타일</h1>
+
+	<hr>
+
+	<h2>기본 스타일</h2>
+	<h3>width, height</h3>
+	<h4>고정크기</h4>
+	<div id="fixed-size" class="size-test"></div>
+
+	<h4>가변크기</h4>
+	<div id="variable-size" class="size-test"></div>
+
+	<h3>화면 배치 방법 변경</h3>
+	<!--
+		블록 요소를 인라인 요소로 변경
+	-->
+	<p>display: inline</p>
+	<!-- div*5{$ 번째 영역} -->
+	<div class="display display-inline area1" >1 번째 영역</div>
+	<div class="display display-inline area2" >2 번째 영역</div>
+	<div class="display display-inline area3" >3 번째 영역</div>
+	<div class="display display-inline area4" >4 번째 영역</div>
+	<div class="display display-inline area5" >5 번째 영역</div>
+
+	<p>display: inline-block</p>
+	<!-- div*5{$ 번째 영역} -->
+	<div class="display display-inline-block area1" >1 번째 영역</div>
+	<div class="display display-inline-block area2" >2 번째 영역</div>
+	<div class="display display-inline-block area3" >3 번째 영역</div>
+	<div class="display display-inline-block area4" >4 번째 영역</div>
+	<div class="display display-inline-block area5" >5 번째 영역</div>
+
+	<!--
+		인라인 요소를 블록 요소로 변경
+	-->
+	<p>display: block</p>
+	<!-- span.display.display-block.area$*5{$ 번째 영역} -->
+	<span class="display display-block area1">1 번째 영역</span>
+	<span class="display display-block area2">2 번째 영역</span>
+	<span class="display display-block area3">3 번째 영역</span>
+	<span class="display display-block area4">4 번째 영역</span>
+	<span class="display display-block area5">5 번째 영역</span>
+
+	<hr>
+
+	<h2>테두리 스타일</h2>
+	<!-- div.border#border-test$*10 -->
+	<div class="border" id="border-test1"></div><br>
+	<div class="border" id="border-test2"></div><br>
+	<div class="border" id="border-test3"></div><br>
+	<div class="border" id="border-test4"></div><br>
+	<div class="border" id="border-test5"></div><br>
+	<div class="border" id="border-test6"></div><br>
+	<div class="border" id="border-test7"></div><br>
+	<div class="border" id="border-test8"></div><br>
+	<div class="border" id="border-test9"></div><br>
+	<div class="border" id="border-test10"></div>
+
+
+	<hr>
+
+	<h2>여백 스타일</h2>
+	<div class="space">기준 div</div>
+
+	<h3>padding</h3>
+	<!--
+		테두리와 콘텐츠 영역 사이의 거리 조절
+	-->
+	<div class="space" id="padding1">전체 padding</div>
+
+	<br>
+
+	<div class="space" id="padding2">부분 padding</div>
+
+	<h3>margin</h3>
+	<!--
+		다른 요소들 간의 간격 조절
+	-->
+	<!-- div.space#margin$*2 -->
+	<div class="space" id="margin1">전체 margin</div>
+	<div class="space" id="margin2">부분 margin</div>
+
+
+	<hr>
+
+	<h2>포지셔닝</h2>
+	<!--
+		css를 이용해서 여러 요소를 적절하게 배치하는 것
+	-->
+	<h3>절대 위치와 상대 위치</h3>
+	<div class="outer">
+		<!-- div.positioning*3 -->
+		<div id="first"></div>
+		<div id="second"></div>
+		<div id="third"></div>
+	</div>
+
+	<h3>고정 위치</h3>
+	<!-- <div id="fixed-area"></div> -->
+
+	<hr>
+
+	<h3>visibility</h3>
+	<!-- div#v-test$*3 -->
+	<div class="visibility" id="v-test1"></div>
+	<div class="visibility" id="v-test2"></div>
+	<div class="visibility" id="v-test3"></div>
+
+	<hr>
+
+	<h3>z-index</h3>
+	<div id="z-wrap">
+		<!-- div.z-test#z$*3 -->
+		<div class="z-test" id="z1"></div>
+		<div class="z-test" id="z2"></div>
+		<div class="z-test" id="z3"></div>
+
+	</div>
+
+	<hr>
+
+	<h3>float, clear</h3>
+	<!-- div{$$$}*5 -->
+	<div class="float-test">001</div>
+	<div class="float-test">002</div>
+	<div class="float-test">003</div>
+	<div class="float-test">004</div>
+	<div class="float-test">005</div>
+
+	<hr style="clear: both;">
+	<!-- 속성 clear : float 속성의 영향을 받지 않게 -->
+
+	<h2>다단 스타일</h2>
+
+	<h3>단의 너비를 이용하여 단 나누기</h3>
+	<div class="column-wrap" id="column1">
+		<h5>전국 곳곳에 비·강풍에 체감온도 ‘뚝’ … 내일 더 춥다</h5>
+		<p>
+			내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+			9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+			강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+			특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+			아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+
+			찬 공기가 지속해서 유입되면서 당분간 아침 기온은 대부분 지역에서 5도 이하로 낮아지겠고, 경기 북부와 강원내륙·산지는 아침 기온이 0도를 밑도는 곳도 있겠다. 바람도 강하게 불어 체감온도는 더욱 낮겠으니 건강관리에 유의해야 한다.
+
+			미세먼지 농도는 전 권역이 '좋음' 수준을 보이겠다.
+
+			서해와 동해상에는 돌풍과 함께 천둥·번개가 치는 곳이 있겠으니 해상 사고에 주의해야 한다.
+
+			바다의 물결은 동해 앞바다에서 0.5∼2.0ｍ, 서해 앞바다에서 1.5∼4.0ｍ, 남해 앞바다에서 0.5∼2.5ｍ로 일겠다. 안쪽 먼바다(해안선에서 약 200㎞ 내의 먼바다)의 파고는 동해와 남해 1.5∼4.0ｍ, 서해 2.0∼4.0ｍ로 예상된다.
+
+		</p>
+	</div>
+
+	<h3>단의 개수를 이용하여 단 나누기</h3>
+	<div class="column-wrap" id="column2">
+		<h5>전국 곳곳에 비·강풍에 체감온도 ‘뚝’ … 내일 더 춥다</h5>
+		<p>
+			내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+			9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+			강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+			특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+			아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+
+			찬 공기가 지속해서 유입되면서 당분간 아침 기온은 대부분 지역에서 5도 이하로 낮아지겠고, 경기 북부와 강원내륙·산지는 아침 기온이 0도를 밑도는 곳도 있겠다. 바람도 강하게 불어 체감온도는 더욱 낮겠으니 건강관리에 유의해야 한다.
+
+			미세먼지 농도는 전 권역이 '좋음' 수준을 보이겠다.
+
+			서해와 동해상에는 돌풍과 함께 천둥·번개가 치는 곳이 있겠으니 해상 사고에 주의해야 한다.
+
+			바다의 물결은 동해 앞바다에서 0.5∼2.0ｍ, 서해 앞바다에서 1.5∼4.0ｍ, 남해 앞바다에서 0.5∼2.5ｍ로 일겠다. 안쪽 먼바다(해안선에서 약 200㎞ 내의 먼바다)의 파고는 동해와 남해 1.5∼4.0ｍ, 서해 2.0∼4.0ｍ로 예상된다.
+
+		</p>
+
+	</div>
+
+	<hr>
+
+	<h2>표 스타일</h2>
+	<!-- table>caption{성적표}+tr*3>td*2 -->
+	<table>
+		<caption>성적표</caption>
+		<tr>
+			<td>구분</td>
+			<td>점수</td>
+		</tr>
+		<tr>
+			<td>수학</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td>국어</td>
+			<td>100</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td>sfakjsdfa;djfalksdfadlskjfahdkjasdlfkjasdfkajhwelkraekwjrahekrjahlekjahlekrj</td>
+		</tr>
+	</table>
+
+
+
+
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+	<br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
