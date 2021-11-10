@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>색상 스타일</title>
+	<style>
+		body{
+			/* background-color: darkcyan; */
+			/* 따로 크기 지정 안하면 안의 내용만큼 나온다. */
+			/* background-color: #f867e0; */
+			/* background-color: rgb(21, 179, 207); */
+			background-color: rgba(255, 251, 0, .5)
+			/* background-color: hsla(30, 100%, 50%, .5); */
+		}
+
+		#div-bg{
+			width: 50%;
+			background-color: #ffffff;
+		}
+
+		.clip-test{
+			background-color: white;
+			margin: 30px;
+			padding: 30px;
+			width: 30%;
+			border: 15px dashed rgba(0, 0, 0, .3);
+		}
+
+		#clip1{
+			background-clip: border-box;
+			/* 기본값 */
+		}
+
+		#clip2{
+			background-clip: padding-box;
+		}
+
+		#clip3{
+			background-clip: content-box;
+		}
+
+		#bg-img{
+			border: 15px solid rgba(0, 0, 0, .3);
+			width: 75%;
+			height: 500px;
+			padding: 50px;
+			background-image: url('../resources/image/bgsample.PNG');
+
+			/* 이미지 반복 설정 */
+			/* background-repeat: repeat; 기본값 */
+			/* background-repeat: repeat-x; */
+			/* background-repeat: repeat-y; */
+			background-repeat: no-repeat;
+
+			/* 이미지 크기 설정 */
+			/* background-size: auto; 기본값 */
+			/* background-size: contain; */
+			/* background-size: cover; */
+			background-size: 350px 250px;
+			/* background-size: 100% 100%; */
+
+			/* 이미지 위치 설정 */
+			/* background-position: left top; 기본값 */
+			/* background-position: right; */
+			/* 두번째 값을 안넣으면 자동으로 center */
+			/* background-position: center top; */
+			/* background-position: left bottom; */
+			/* background-position: 50px 100px; */
+			/* background-position: 50% 50%; */
+			/* 부모 기준 */
+
+			/* 이미지 배치 기준 설정 */
+			/* background-origin: padding-box; 기본값 */
+			/* background-origin: border-box; */
+			/* background-origin: content-box; */
+
+			/* 이미지를 고정하도록 설정 */
+			/* background-attachment: scroll; 기본값 */
+			background-attachment: fixed;
+		}
+	</style>
+</head>
+<body>
+	<h1>색상 스타일</h1>
+
+	<hr>
+
+	<h2>배경 스타일</h2>
+	<h3>background-color</h3>
+
+	<div id="div-bg">
+		내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+		9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+		강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+		특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+		아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+	</div>
+
+	<h3>background-clip</h3>
+	<div id="clip1" class="clip-test">
+		내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+		9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+		강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+		특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+		아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+	</div>
+
+	<div id="clip2" class="clip-test">
+		내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+		9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+		강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+		특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+		아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+	</div>
+
+	<div id="clip3" class="clip-test">
+		내일은 오늘보다 공기가 더 차가워진다. 10일 기온이 낮아지고 바람도 강하게 불어 춥겠으며, 해상에서는 매우 강한 바람이 불고 매우 높은 물결이 일겠다.
+
+		9일 기상청은 전날부터 수도권(서울·경기 북부 제외), 강원내륙·산지, 충청권, 전라권, 경북권 내륙, 제주도, 서해5도, 울릉도·독도에는 5∼20㎜의 비가 내리겠다. 경남서부내륙은 5㎜ 안팎의 비가 오겠다고 예보했다.
+		강원 산지·제주도 산지 3∼8㎝, 강원 내륙·경북 북동 산지에는 1∼5㎝의 눈이 내리겠고, 충북 북부에는 이날만 1㎝ 안팎의 눈이 예보됐다.
+
+		특히, 강원 산지와 제주도 산지에는 많은 눈이 쌓이면서 대설특보가 발표될 가능성이 있겠다.
+
+		아침 최저기온은 -2∼9도, 낮 최고기온은 5∼14도로 예보됐다.
+	</div>
+
+	<hr>
+
+	<h2>배경 이미지</h2>
+
+	<div id="bg-img"></div>
+
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+	<br><br><br><br><br>
+
+</body>
+</html>

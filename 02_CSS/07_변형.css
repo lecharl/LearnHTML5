@@ -1,0 +1,158 @@
+.trans-test{
+	width: 250px;
+	height: 200px;
+	margin-left: 50px;
+}
+
+/* 2차원 변형 */
+/* translate */
+#trans2-1:hover{
+	transform: translateX(50px);
+	/* x축 오른쪽으로 50px */
+	transform: translateX(-50px);
+	/* x축 왼쪽으로 50px */
+}
+
+#trans2-2:hover{
+	transform: translateY(50px);
+	/* y축 아래로 50px */
+	transform: translateY(-50px);
+	/* y축 위로 50px */
+}
+
+#trans2-3:hover{
+	transform: translateX(50px) translateY(50px);
+	transform: translate(50px, 50px);
+}
+
+/* scale */
+#trans2-4:hover{
+	transform: scaleX(2);
+	/* (배수) : 좌우로 배수만큼 확장*/
+	transform: scaleX(-2);
+	/* (음수) : 좌우 뒤집어서 좌우로 배수만큼 확장 */
+	transform: scaleX(0.5);
+	/* 반으로 축소 */
+	transform: scaleX(0);
+	/* (0) : 사라짐 */
+}
+
+#trans2-5:hover{
+	transform: scaleY(2);
+	transform: scaleY(0.5);
+}
+
+#trans2-6:hover{
+	transform: scaleX(0.5) scaleY(0.5);
+	transform: scale(-0.5, -0.5);
+}
+
+/* rotate */
+#trans2-7:hover{
+	transform: rotate(45deg);
+	/* 양수 : 시계방향으로 */
+	transform: rotate(-45deg);
+	/* 음수 : 반시계방향으로 */
+}
+
+/* skew */
+#trans2-8:hover{
+	transform: skewX(20deg);
+	/* 양수 : x축으로 '\' 모양 */
+	/* transform: skewX(-20deg); */
+	/* 음수 : x축으로 '/' 모양 */
+}
+
+#trans2-9:hover{
+	transform: skewY(20deg);
+	/* 양수 : y축으로 '\' 모양 */
+	transform: skewY(-20deg);
+	/* 음수 : y축으로 '/' 모양 */
+}
+
+#trans2-10:hover{
+	transform: skewX(20deg) skewY(20deg);
+	transform: skew(20deg, 20deg);
+}
+
+/* ------------------------- */
+
+/* 3차원 변형 */
+/* translate */
+#trans3-1:hover{
+	transform: perspective(300px) translateZ(-500px);
+	transform: perspective(300px) translateZ(0px);
+	transform: perspective(300px) translateZ(270px);
+	transform: perspective(300px) translateZ(300px);
+	/* perspective(a), translateZ(b) :  */
+	/* a=b : 우리눈에 딱 붙어있음 */
+	/* a만큼 우리가 화면에서 떨어짐 */
+	/* b만큼 화면에서 요소가 (양수)가까워지고 (음수)멀어지고*/
+}
+
+#trans3-2:hover{
+	transform: perspective(300px) translate3d(50px, 50px, 100px);
+}
+
+/* rotate */
+
+#trans3-3:hover{
+	transform: perspective(300px) rotateX(30deg);
+	transform: perspective(300px) rotateX(180deg);
+}
+
+#trans3-4:hover{
+	transform: perspective(300px) rotateY(30deg);
+	transform: perspective(300px) rotateY(180deg);
+}
+
+#trans3-5:hover{
+	transform: /*perspective(300px)*/ rotateZ(30deg);
+}
+
+#trans3-6:hover{
+	/* 주어진 각도만큼 x축, y축, z축을 기준으로 회전시킨다. */
+	transform: perspective(300px) rotate3d(0, 1, 1, 30deg);
+	/* x, y, z : 0~1 */
+}
+
+/* ------------------- */
+/* 기타 변형 속성 */
+/* transform-origin */
+.flower{
+	border: 1px solid;
+	width: 300px;
+	height: 200px;
+}
+
+.to-wrap{
+	display: inline-block;
+}
+
+#left-top:hover{
+	transform-origin: left top;
+	transform: rotate(25deg);
+}
+#right-top:hover{
+	transform-origin: right top;
+	transform: rotate(25deg);
+}
+#left-bottom:hover{
+	transform-origin: left bottom;
+	transform: rotate(25deg);
+}
+#right-bottom:hover{
+	transform-origin: right bottom;
+	transform: rotate(25deg);
+}
+
+/* backface-visibility */
+#back1:hover{
+	transform: rotateY(180deg);
+	/* backface-visibility: visible;	기본값 */
+}
+
+#back2:hover{
+	transform: rotateY(180deg);
+	backface-visibility: hidden;
+}
