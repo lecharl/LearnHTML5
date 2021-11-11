@@ -1,0 +1,72 @@
+/* 웹 문서 구조 */
+/* 영역 관련 속성 */
+.test{
+	/* border 영역 */
+	border: 20px solid blue;
+
+	/* contest 영역 */
+	width: 300px;
+	height: 150px;
+
+	/* padding 영역 */
+	padding: 10px;
+
+	/* margin 영역 */
+	margin: 20px;
+
+	/*
+		콘텐스 영역의 너비에 패딩과 보더 크기까지 합쳐서
+		width, height 속성을 지정하도록 설정하는 속성
+	*/
+	/* box-sizing: border-box; */
+}
+
+/* div 안에 또 다른 div 넣기 */
+
+.inner{
+	border: 20px solid red;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+
+/* div 안에 또 다른 div 여러개 넣기 */
+.wrap{
+	border: 5px solid blue;
+	width: 500px;
+	height: 300px;
+}
+/* 상/하 div 2등분 하기 */
+.test1, .test2{
+	border: 5px solid red;
+	width: 100%;
+	box-sizing: border-box;
+}
+.test1{
+	height: 70%;
+}
+
+.test2{
+	height: 30%;
+}
+
+/* 좌/우 div 2등분 하기 */
+/* 방법1 : display: inline-block */
+/* 방법2 : float: left */
+.test3, .test4{
+	border: 5px solid red;
+	height: 100%;
+	box-sizing: border-box;
+	/* display: inline-block;
+	margin-right: -6px; */
+	float: left;
+}
+
+.test3{
+	width: 60%;
+}
+
+.test4{
+	width: 40%;
+}

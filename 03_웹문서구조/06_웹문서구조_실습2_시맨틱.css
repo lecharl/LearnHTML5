@@ -1,0 +1,57 @@
+body *{
+	border: 1px solid rebeccapurple;
+	box-sizing: border-box;
+}
+#wrap{
+	width: 1000px;
+	height: 800px;
+	margin: auto;
+}
+
+#header{
+	height: 25%;
+}
+
+header{
+	height: 80%;
+}
+
+header>div{
+	height: 100%;
+	float: left;
+}
+
+#logo{
+	width: 15%;
+}
+#h_content{
+	width: 65%;
+}
+#login{
+	width: 20%;
+}
+
+menubar{
+	height: 20%;
+}
+
+section{
+	height: 55%;
+}
+
+section>*{
+	height: 100%;
+	float: left;
+}
+
+aside{
+	width: 20%;
+}
+
+#a1, #a2{
+	width: 40%;
+}
+
+footer{
+	height: 20%;
+}
