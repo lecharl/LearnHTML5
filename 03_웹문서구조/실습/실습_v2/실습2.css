@@ -1,0 +1,239 @@
+body *{
+	/* border: 1px solid silver; */
+	box-sizing: border-box;
+}
+
+
+#wrap{
+	width: 1000px;
+	height: 800px;
+	margin: auto;
+}
+
+.wborder{
+	border: 1px solid silver;
+	margin: 10px;
+}
+
+header{
+	height: 20%;
+}
+
+#heading{
+	height: 80%;
+}
+
+#heading>*{
+	height: 100%;
+	float: left;
+}
+
+#h1{
+	width: 20%;
+	text-align: center;
+	line-height: 130px;
+}
+#h1>img{
+	width: 50%;
+	vertical-align: middle;
+}
+#h2{
+	width: 60%;
+	padding-left: 90px;
+}
+
+#search_wrap{
+	width: 400px;
+	height: 30px;
+	text-align: center;
+	line-height: 130px;
+}
+
+#search_form{
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+}
+#search_form>div{
+	height: 100%;
+	float: left;
+}
+
+#search_input{
+	width: 80%;
+	height: 100%;
+}
+#search_input>input{
+	width: 100%;
+	height: 100%;
+}
+
+#search_click{
+	width: 20%;
+	height: 100%;
+}
+#search_click>button{
+	width: 100%;
+	height: 100%;
+	vertical-align: middle;
+	background-color: white;
+}
+#search_click>button>img{
+	width: 40%;
+	height: 80%;
+	vertical-align: middle;
+}
+
+#h3{
+	width: 20%;
+}
+
+nav{
+	height: 20%;
+}
+#navi{
+	list-style-type:none;
+	height: 100%;
+	padding: none;
+	margin: 0;
+}
+#navi>li{
+	width: 20%;
+	height: 100%;
+	float: left;
+	text-align: center;
+	line-height: 28px;
+}
+
+#navi a{
+	text-decoration: none;
+	font-weight: bold;
+	vertical-align: middle;
+	color: slategray;
+}
+section{
+	height: 60%;
+}
+
+section>*{
+	height: 100%;
+	float: left;
+}
+
+#a1{
+	width: 75%;
+}
+
+#a1_1{
+	height: 30%;
+}
+#a1_1>img{
+	width: 100%;
+	height: 100%;
+}
+#a1_2{
+	height: 8%;
+	line-height: 35px;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+#a1_2>div{
+	float: left;
+	height: 100%;
+}
+#a1_2_1{
+	width: 70%;
+	vertical-align: middle;
+}
+#a1_2 a{
+	font-size: 0.8em;
+	text-decoration: none;
+	color: black;
+}
+#a1_2_2{
+	width: 30%;
+	text-align: right;
+}
+
+#a1_3{
+	height: auto;
+}
+#a1_3>img{
+	width: 100%;
+	height: 100%;
+}
+
+#a2{
+	width: 25%;
+	height: 100%;
+}
+
+#a2_1{
+	height: 30%;
+}
+
+#login_form{
+	width: 100%;
+	height: 75%;
+}
+#login_form>div{
+	height: 100%;
+	float: left;
+}
+
+#login_input{
+	width: 70%;
+}
+#login_input>input{
+	width: 100%;
+	height: 50%;
+}
+
+#login_submit{
+	width: 30%;
+}
+#login_submit>input{
+	width: 100%;
+	height: 100%;
+}
+
+#login_link{
+	height: 25%;
+	text-align: center;
+}
+#login_link>a{
+	color: black;
+	text-decoration: none;
+	font-size: 12px;
+}
+
+#a2_2{
+	height: 63%;
+}
+
+#a2_2>img{
+	width: 100%;
+	height: 100%;
+}
+
+footer{
+	height: 20%;
+	padding-left: 15px;
+	padding-top: 15px;
+}
+#f1>a, #f2>p, #f3>p{
+	font-size: 0.8em;
+
+}
+#f1>a{
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+#f2>p{
+	margin-top: 30px;
+	margin-bottom: 18px;
+}
+#f3{
+	text-align: center;
+}
