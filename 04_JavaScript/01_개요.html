@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>자바스크립트 개요</title>
 
-	<script src="./01_개요.js"></script>
+	<!-- <script src="./01_개요.js"></script> -->
 
 	<style>
 		.area{
@@ -92,9 +92,9 @@
 			// console.log(window.confirm('졸리신가요?'));
 			// console.log(confirm('졸리신가요?')); window 생략 가능
 			if(confirm('여러분 배고픈가요?')){
-				alert('저도 배고파요ㅜㅜ')
+				alert('저도 배고파요ㅜㅜ');
 			} else{
-				alert('저만 배고픈가요?ㅠㅠ')
+				alert('저만 배고픈가요?ㅠㅠ');
 			}
 		}
 	</script>
@@ -115,8 +115,11 @@
 			console.log(name);
 
 			if(name != null && name.trim() != ''){
+				//입력한 내용을 입력했다면
+				// && 양끝에 공백제거 한 후의 내용이 빈문자열이 아니라면
 				alert(name + '님 환영합니다.');
 				alert(`${name}님 환영합니다.`);
+				//템플릿 리터럴*******
 
 				// "a"
 				// "abc"
@@ -161,9 +164,11 @@
 			var div1 = document.getElementById('div1');
 
 			console.log(div1);
+			//모든것들 다  <div>~</div>
 			console.log(div1.innerHTML);
+			//innerHTML : 텍스트 사이의 요소(<b>)까지 다
 			console.log(div1.innerText);
-
+			//innerText : 텍스트 내용만
 			div1.innerHTML += '<br> innerHTML 속성으로 값 변경';
 			// div1.innerHTML = div1.innerHTML + '<br> innerHTML 속성으로 값 변경';
 		}
@@ -296,16 +301,17 @@
 			var area = document.getElementById('area3');
 			var input = document.getElementById('userName');
 			var value = input.value;
+			//입력한 값****
 
 			if(value.trim() == '' || value.length == 0){
 				alert('이름을 입력하세요.');
-
-				area.innerHTML = '';
-				input.focus();
+				// 요렇게 주석처리하구
+				// area.innerHTML = '';	//div박스 안이 비워지게
+				input.focus();	//input 에 커서가
 			} else{
-				area.innerHTML = value;
-				input.value = '';
-				input.focus();
+				area.innerHTML += value+"<br>";	//input에 작성한 텍스트를 div박스 안에 넣고
+				input.value = '';	//input 안은 비워지게
+				input.focus();	//input 에 커서가
 			}
 		}
 	</script>
@@ -319,6 +325,6 @@
 	<br><br><br><br><br><br>
 	<br><br><br><br><br><br>
 
-	<!-- <script src="./01_개요.js"></script> -->
+	<script src="./01_개요.js"></script>
 </body>
 </html>
