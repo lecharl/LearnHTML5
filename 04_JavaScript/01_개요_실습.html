@@ -39,7 +39,24 @@
     </p>
     <div id="div1" class="div-test"></div>
     <input id="selectColor" type="color">
+    <!-- <button onclick="colorChange();">변경</button> -->
     <button>변경</button>
+
+    <script>
+        function colorChange() {
+            let sC = document.querySelector("#selectColor");
+            let sCv = sC.value;
+            // console.log(sCv);
+
+            let div11 = document.querySelector("#div1");
+            div11.style.backgroundColor = sCv;
+        }
+        //니꼬쌤 방법
+        const bt1 = document.querySelector("#selectColor + button");
+        bt1.addEventListener("click", colorChange);
+
+    </script>
+
 
     <hr>
 
@@ -48,9 +65,28 @@
         버튼에 따라 크기 조절이 가능하도록 만들기
     </p>
     <div id="div2" class="div-test"></div>
-    <button>50X50</button>
-    <button>원본(100X100)</button>
-    <button>200X200</button>
+    <button onclick="ch55();">50X50</button>
+    <button onclick="ch11();">원본(100X100)</button>
+    <button onclick="ch22();">200X200</button>
+
+    <script>
+        function ch55() {
+            const div22 = document.querySelector("#div2");
+            div22.style.width = "50px";
+            div22.style.height = "50px";
+        }
+        function ch11() {
+            const div22 = document.querySelector("#div2");
+            div22.style.width = "100px";
+            div22.style.height = "100px";
+        }
+        function ch22() {
+            const div22 = document.querySelector("#div2");
+            div22.style.width = "200px";
+            div22.style.height = "200px";
+        }
+
+    </script>
 
 
     <hr>
@@ -73,9 +109,32 @@
 
     <br><br>
 
-    <button>입력값 출력하기</button>
+    <button onclick="printIn();">입력값 출력하기</button>
 
     <div id="area"></div>
+
+    <script>
+        // const cusName = document.getElementsByTagName("")
+
+        const a = document.querySelector("#area");
+        const cusName = document.querySelector("label>input:not(id):not(name)");
+        const boxName = document.getElementById("pName");
+        // const price1 = document.querySelector("")
+        const price1 = document.getElementsByName("price");
+        //배열로 불러와서 undefined로 됨*********
+
+        function printIn() {
+
+            let cNv = cusName.value;
+            let bNv = boxName.value;
+            let p1v = price1[0].value;
+
+            a.innerHTML = cNv + "<br>" + bNv + "<br>" + p1v;
+        }
+
+    </script>
+
+
 
     <hr>
 
@@ -85,9 +144,39 @@
         아래의 div 태그에 innerHTML 속성을 사용해서 만들어진 테이블 포함한다.
     </p>
 
-    <button>테이블 생성</button>
+    <button onclick="makeTable();">테이블 생성</button>
 
     <div id="div3" style="margin-top: 10px;"></div>
+
+    <script>
+        const d3 = document.querySelector("#div3");
+        // d3.addEventListener("click", makeTable)
+
+        function makeTable() {
+            const r = prompt("행의 개수를 입력하세요.");
+            const c = prompt("열의 개수를 입력하세요.");
+
+            console.log(r);
+            console.log(c);
+
+            if(r != null && r.trim() != '' && c != null && c.trim() != ''){
+                d3.innerHTML += document.write('<table border="1">');
+                    for (let i = 0; i < r; i++) {
+                        d3.innerHTML += document.write('<tr>');
+                        for (let j = 0; j < c; j++) {
+                            d3.innerHTML += document.write('<td>');
+                            d3.innerHTML += document.write(`${i}, ${j}`);
+                            d3.innerHTML += document.write('</td>');
+                        }
+                        d3.innerHTML += document.write('</tr>')
+                    }
+                document.write('</table>');
+                // d3.innerHTML += "<table border="1px">tr*3</table>";
+            }
+        }
+    </script>
+
+
 
 
     <br><br><br><br><br><br>
