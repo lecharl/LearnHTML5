@@ -18,4 +18,4 @@ document.body.appendChild(bgImage);
 //document.body.appendChild(?) : body에 ?을 가장 뒤에 추가한다.
 //document.body.prependChild(?) : body에 ?을 가장 앞에 추가한다.
 
-console.log(bgImage);
+// console.log(bgImage);
