@@ -18,6 +18,80 @@
 
 		// alert(x+y);
 
+		let nums = new Array();
+
+		nums.push(3)
+		nums.push(12)
+		nums.push(56)
+		console.log(nums);
+
+		let n1 = nums.pop()
+
+		console.log(`n1 : ${n1}, nums : ${nums}`);
+
+		let nums2 = new Array(5, 10, 21, 'hello', new Array(2, '3', 4))
+		let nums3 = [5, 10, 21, 'hello', [2, '3', 4]]
+
+		console.log(typeof nums2[4][1]);
+		console.log(nums2);
+		console.log(nums2[4]);
+		console.log(typeof nums3);
+
+		console.log('------------------');
+
+		// let exam = new Object()
+		// exam.kor = 30
+		// exam['kor'] = 30
+		// exam.eng = 40
+		// exam.math = 50
+
+		let exam = {"kor": 30, "eng": 40, "math": 50}
+		let ar = [3, 4, 5, 6, exam, [7, 8, 9]]
+
+		console.log(exam.kor + exam.eng);
+		console.log(ar[4]);
+		console.log(ar[4]["math"]);
+
+		console.log('-----------------------------------');
+
+		let data = '{id: 1, title: "aaa"}'
+		console.log(data)
+		console.log(typeof data);
+
+		let data1 = JSON.parse('{"id": 1, "title": "aaa"}')
+		console.log(data1)
+		console.log(typeof data1);
+
+		console.log('-----------------------------------');
+
+		let data2 = {id: 2, title: "bbb"}
+		let json = JSON.stringify(data2)
+		// "{"id": 2, "title": "bbb"}"
+		console.log(data2)
+		console.log(typeof data2);
+
+
+		console.log('----------------------------');
+
+		let x = 3;
+		let y = 3;
+
+		console.log(x == y);	//true
+		console.log(x === y);	//true
+		console.log(typeof x, typeof y);
+		//왜? 같은 값을 참조할 경우 같은 박스를 가리키기 때문
+
+		let x1 = 3;
+		let y1 = new Number(3);
+
+		console.log(x1 == y1);
+		console.log(x1 === y1);
+		console.log(typeof x1, typeof y1);
+
+		console.log('-----------------------');
+
+		
+
 	</script>
 </body>
 </html>
