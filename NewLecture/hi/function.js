@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 Function
@@ -41,7 +41,8 @@ function changeName(obj) {
 const ellie2 = {
   name: "ellie",
 };
-changeName("nico");
+// changeName("nico");
+changeName(ellie2);
 console.log(ellie2);
 console.log("----------------------------");
 
@@ -202,6 +203,29 @@ const resultCal = function calculate(command, a, b) {
   } else remainder(a, b);
 };
 
-const substract = (a, b) => { a - b;};
-const multiply = (a, b) => { a * b;};
-const remainder = (a, b) => { a % b;};
+const substract = (a, b) => {
+  a - b;
+};
+const multiply = (a, b) => {
+  a * b;
+};
+const remainder = (a, b) => {
+  a % b;
+};
+
+function calculateEllie(command, a, b) {
+  switch (command) {
+    case "add":
+      return a + b;
+    case "substract":
+      return a - b;
+    case "multiply":
+      return a * b;
+    case "divide":
+      return a / b;
+    case "remainder":
+      return a % b;
+    default:
+      throw Error("unknown command");
+  }
+}
