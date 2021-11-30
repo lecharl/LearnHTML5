@@ -83,13 +83,16 @@ btn3.addEventListener("click", () => {
     price: 0,
     supportOS: ["win7", "win10"],
     service: true,
+    // key: '크아못함',
   };
 
   console.log(game);
 
   for (const key in game) {
     console.log(`key : ${key}, game[key] : ${game[key]}`);
-    //key말고 다른이름으로 써도 된다. 어쨌든 객체의 속성을 가져온다는 것!
+    //key말고 다른이름으로 써도 된다. 어쨌든 객체의 속성key을 가져온다는 것!
+    console.log(`key : ${key}, game[key] : ${game.key}`);
+    //`.key` : 진짜 key 라는 이름의 속성을 가져오라는 뜻!! 없으므로 undefined
   }
 });
 
@@ -174,6 +177,8 @@ btn5.addEventListener("click", () => {
 });
 
 //생성자 함수
+//생성자 함수에는 메소드를 제외한 **속성들만** 만들고, 중복되는 상수나 메소드는 prototype을 이용해서 만든다.
+//생성자 함수로 만들어진 객체들이 그 공통된 상수나 메소드를 공유해서 쓸 수 있게 된다.
 function Student(name, java, oracle) {
   //속성 정의
   this.name = name;
@@ -189,6 +194,7 @@ function Student(name, java, oracle) {
   // };
 }
 
+//상속 같은 기능 구현
 Student.prototype.getSum = function () {
   return this.java + this.oracle;
 };
@@ -208,17 +214,18 @@ btn6.addEventListener("click", () => {
   students.push(new Student("이몽룡", 40, 40));
 
   //생성자 함수로 만들어진 객체의 경우 해당 객체가 어떤 생성자 함수로 생성되었는지 instanceof연산자로 검사할 수 있다.
-  console.log(student instanceof Student);
-  console.log(students instanceof Student);
+  console.log(student instanceof Student); //true
+  console.log(students instanceof Student); //false
   console.log(students);
 
   //모든 학생의 정보가 담긴 배열을 출력(이름, 총점, 평균)
   for (const index in students) {
     console.log(
-      `이름 : ${students[index].name}, 총점 : ${students[
-        index
-      ].getSum()}, 평균 : ${students[index].getAvg()} `
+      `이름 : ${students[index].name},
+      총점 : ${students[index].getSum()},
+      평균 : ${students[index].getAvg()} `
     );
+    //해당 객체에 해당 메소드가 없다면, 연결된 prototype으로, 없다면 또 연결된 prototype으로 가서 찾는다.
   }
 });
 

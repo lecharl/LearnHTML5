@@ -73,8 +73,8 @@ const students = [
   const result1 = students.find((student) => student.score === 90);
   console.log(result1);
   console.log(result1.name);
-  console.log("==========================================");
 }
+console.log("==========================================");
 
 //6. make an array of enrolled students : filter(콜백함수)
 //filter() : 콜백함수가 true를 반환하게 하는 요소들을 새로운 배열로 만든다.
@@ -110,7 +110,7 @@ console.log("==========================================");
 //콜백함수 : 누적된 결과를 반환한다.
 //reduce() : 배열의 모든 요소의 값을 누적한다.
 //배열.reduce(콜백함수, 초깃값)
-//콜백함수 = (누적값pre, 현잿값cur, 인덱스i, 요소) => {... return 다음acc}
+//콜백함수 = (누적값pre, 현잿값cur, 인덱스i, 요소) => {... return 다음pre}
 {
   const result = students.reduce((pre, cur, i) => {
     console.log(pre, cur, i);
@@ -133,7 +133,7 @@ console.log("==========================================");
   const result3 = students.reduce((pre, cur, i) => {
     console.log(pre, cur.score, i);
     return pre + cur.score;
-    //리턴값 : 0 + 45 -> 45 + 80 -> 125 + 90 -> ... 이 다음 acc로 들어간다.
+    //리턴값 : 0 + 45 -> 45 + 80 -> 125 + 90 -> ... 이 다음 pre로 들어간다.
   }, 0);
   console.log(result3);
   console.log("---------------------------------");
