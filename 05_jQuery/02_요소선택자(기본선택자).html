@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+	<h1>기본 선택자를 이용해서 요소 선택</h1>
+
+	<h3>아이디 선택자</h3>
+	<p>
+		- 특정 아이디를 가진 요소 **하나만** 가지고 온다.
+	</p>
+
+	<h1 id="t1">테스트1 (js)</h1>
+	<h1 id="t2">테스트2 (jQuery)</h1>
+
+
+	<script>
+		$(document).ready(function(){
+			//js
+			document.getElementById('t1').style.color = 'red';
+
+			//jQuery
+			$('#t2').css('color', 'blue');
+			$('#t2').text('text 변경~!');	//innerTEXT
+			$('#t2').html('html 변경~!');	//innerHTML
+
+			//요소들 출력하기
+			console.log(document.getElementById('t1'));
+			console.log($('#t2'));	//배열 형태로 반환해준다!!
+		})
+	</script>
+	<hr><hr>
+
+	<h3>태그 선택자</h3>
+
+	<p>사과</p>
+	<p>배</p>
+	<p>딸기</p>
+
+	<h6>엄외</h6>
+	<h6>레샤</h6>
+	<h6>슈스</h6>
+
+	<script>
+		$(function(){
+			//js
+			const pArr = document.getElementsByTagName('p');
+			for (const p of pArr) {
+				p.style.color = 'red';
+			}
+
+			//jQuery
+			$('h6').css('color', 'blue');
+
+			//여러 종류의 요소들을 한번에 가져올 수 있다!!
+			$('p, h6, #t1').css('backgroundColor', 'aqua');
+		})
+	</script>
+
+	<h3>클래스 선택하기</h3>
+
+	<h1 class="item">i1</h1>
+	<h1 class="item">i2</h1>
+	<h1 class="item">i3</h1>
+
+	<script>
+		$(function(){
+			$('.item').css('color', 'rebeccapurple')
+		})
+	</script>
+</body>
+</html>

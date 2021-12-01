@@ -6,6 +6,7 @@ const toDoList = document.getElementById("todo-list");
 //투두를 저장하기 위한 배열 변수
 const toDos = [];
 
+//3
 function saveToDos() {
 	// localStorage.setItem("todosss", toDos);
 	//***오로지 텍스트로만 저장
@@ -19,15 +20,17 @@ function deleteToDo(event) {
   li.remove();
 }
 
+//2
 function paintToDo(newTodo) {
   // console.log('i will paint '+newTodo);
   const li = document.createElement("li");
   const span = document.createElement("span");
-  //****span을 li 안 *맨 아래*에 넣기
+  //li 안에, marker 바로 옆에 텍스트 감쌀 span
   const button = document.createElement("button");
   button.innerHTML = "❌";
   button.addEventListener("click", deleteToDo);
 
+  //****span을 li 안 *맨 아래*에 넣기
   li.appendChild(span);
   li.appendChild(button);
 
@@ -38,6 +41,7 @@ function paintToDo(newTodo) {
   console.log(li);
 }
 
+//1
 function handleToDoSubmit(event) {
   event.preventDefault();
   const newTodo = toDoInput.value; //새로운 변수에 담아서 저장하는 용도

@@ -36,7 +36,7 @@ btn2.addEventListener("click", () => {
   area.innerHTML += `num1 : ${num1},	num1 instanceof Number : ${num1 instanceof Number}, typeof(num1) : ${typeof num1}<br>`;
   area.innerHTML += `num2 : ${num1},	num2 instanceof Number : ${num2 instanceof Number}, typeof(num2) : ${typeof num2}<br>`;
   area.innerHTML += `num3 : ${num1},	num3 instanceof Number : ${num3 instanceof Number}, typeof(num3) : ${typeof num3}<br><br>`;
-	//new Number 생성자로 만들어졌기에 true????? 나머진 뭐지
+	//new Number 생성자로 만들어졌기에 true
 
 	area.innerHTML += `num1.toExponential() : ${num1.toExponential()}, typeof(num1) : ${typeof(num1.toExponential())}<br>`;
 	//문자열로 반환

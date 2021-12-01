@@ -4,7 +4,7 @@ let btn1 = document.getElementById("btn1");
 
 btn1.addEventListener("click", () => {
   let area = document.getElementById("area1");
-  //객체 리터럴????
+  //객체 리터럴
   let product = {
     // 'pName': "아이폰 12 미니", 특수문자나 공백이 없을 경우 작은따옴표는 없어도 된다.
     0: "배열 흉내",
@@ -107,6 +107,7 @@ btn4.addEventListener("click", () => {
   student.name = "홍길동";
   student.age = 20;
   student["job"] = "도둑";
+  console.log('--------------------------------------------------------');
 
   //객체에 메소드 추가
   student.whoAreyou = function () {
@@ -122,6 +123,8 @@ btn4.addEventListener("click", () => {
   console.log(student);
   console.log(student.whoAreyou());
   console.log("job" in student);
+
+  console.log('--------------------------------------------------------');
 
   delete student.job;
   // delete(student.job);
@@ -153,6 +156,8 @@ btn5.addEventListener("click", () => {
   students.push({ name: "백구", java: 100, oracle: 100 });
   students.push(student4);
   students.push(student5);
+  console.log(students);
+  console.log('--------------------------------------------------------');
 
   //배열에 담겨있는 모든 객체에 메소드를 추가
   for (let i = 0; i < students.length; i++) {
@@ -166,6 +171,7 @@ btn5.addEventListener("click", () => {
   }
 
   console.log(students);
+  console.log('--------------------------------------------------------');
 
   //모든 학생의 정보가 담긴 배열을 출력
   for (const index in students) {
@@ -174,6 +180,13 @@ btn5.addEventListener("click", () => {
       console.log(`이름 : ${name}, 총점 : ${getSum()}, 평균 : ${getAvg()} `);
     }
   }
+  console.log("--------------------------------------------------------");
+  students.forEach((student, index) =>
+    console.log(`이름 : ${student.name},
+    인덱스 : ${index},
+    총점 : ${student.getSum()},
+    평균 : ${student.getAvg()} `)
+  );
 });
 
 //생성자 함수
@@ -217,7 +230,7 @@ btn6.addEventListener("click", () => {
   console.log(student instanceof Student); //true
   console.log(students instanceof Student); //false
   console.log(students);
-
+  console.log('--------------------------------------------------------');
   //모든 학생의 정보가 담긴 배열을 출력(이름, 총점, 평균)
   for (const index in students) {
     console.log(

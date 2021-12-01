@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+</head>
+<body>
+	<h1>자손, 자식으로 선택</h1>
+	<div>
+		<h1>h1</h1>
+		<h2>h2</h2>
+		<h3>h3</h3>
+		<div>
+			<h2>test</h2>
+		</div>
+		<ul>
+			<li>li1</li>
+			<li>li2</li>
+			<li class="li-c">li3</li>
+			<li class="li-c">li4</li>
+			<li>li5</li>
+		</ul>
+	</div>
+
+	<script>
+		$(function(){
+			//자식, 자손
+
+			//태그 가져오기(di, class, tagName, 자식, 자손)
+			//태그 조작하기(css, html, text)
+
+			$('div>h1').css('color', 'red');
+			$('div h2').css('color', 'blue');
+
+			//class 적용된 요소들을 가져와서, 배경이랑 글자색 바꾸기
+			//체이닝 : 한번에 쓰기
+			// $('div .li-c').css('backgroundColor', 'beige').css('color', 'red');
+
+			//체이닝 안쓰고도 한번에 가능
+			$('div .li-c').css({color: 'white', backgroundColor: 'rebeccapurple', 'font-weight': 'bold'})
+
+		})
+	</script>
+
+	<h3>속성 선택자</h3>
+	<p>
+		- 선택자[속성] : 해당 속성을 가진 모든 요소 가져오기  <br>
+		- 선택자[속성=값] : 속성 === 값 <br>
+		- 선택자[속성~=값] : 값에 해당하는 속성이 있으면 선택 <br>
+		- 선택자[속성^=] : 시작값 <br>
+		- 선택자[속성$=] : 끝값 <br>
+		- 선택자[속성*] : 포함 <br>
+	</p>
+
+	<input type="text">  <br>
+	<input type="number" class="test test1"> <br>
+	<input type="radio"> <br>
+	<input type="checkbox"> <br>
+	<input type="button" value="btn~~~" class="test2"> <br>
+
+	<script>
+		$(function(){
+			$('input[type=text]').val('zzz');
+			$('input[class]').css('background', 'red');
+		})
+	</script>
+</body>
+</html>
