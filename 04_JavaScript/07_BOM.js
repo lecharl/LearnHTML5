@@ -13,7 +13,8 @@ btn1.addEventListener("click", () => {
     "https://www.naver.com",
     "naver",
     "width=500",
-    "height=600" /*'resizable=no'*/
+    "height=600"
+    // , 'resizable=no'
   );
 });
 
@@ -31,10 +32,10 @@ btn2.addEventListener("click", () => {
     newWindow.close(); //확인 누르면 창 닫음
   }, 3000); //확인 누르면 3초 뒤 창이 닫힌다.
 
-  console.log(timerId);
+  console.log(timerId); //1, 2, .....
 
   //타이머 id를 clearTimeout()함수에 전달하면 해당 id의 타이머를 취소할 수 있다.
-  clearTimeout(timerId);
+  clearTimeout(timerId);  //창은 열리는데, 안닫힘
 });
 
 //window.setInterval()
@@ -70,7 +71,7 @@ btn3.addEventListener("click", () => {
   }
 });
 
-//4) navigator 객체
+//3) navigator 객체
 let btn4 = document.getElementById("btn4");
 
 btn4.addEventListener("click", () => {
@@ -83,7 +84,7 @@ btn4.addEventListener("click", () => {
 });
 
 
-//5) screen 객체
+//4) screen 객체
 let btn5 = document.getElementById("btn5");
 
 btn5.addEventListener("click", () => {
