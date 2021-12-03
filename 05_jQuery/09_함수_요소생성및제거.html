@@ -213,6 +213,29 @@
 		})
 	</script>
 
+<!--
+	append() : 문자열
+	appendChild() : DOM
+-->
+	<hr><hr>
+
+
+	<div id="target">
+		111
+		222
+		333
+	</div>
+
+	<script>
+		const t = document.getElementById('target')
+
+		const el = document.createElement('h1')
+		const te = document.createTextNode('textzzz')
+		el.appendChild(te);	//<h1>textzzz</h1>
+		t.appendChild(el)
+
+		// t.append('<h1>textzzz</h1>');
+	</script>
 
 	<br><br><br><br><br>
 	<br><br><br><br><br>

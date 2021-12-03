@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>	<title>Document</title>
+</head>
+<body>
+	<!--
+		게시판 만들기(테이블)
+
+		글번호 제목 작성자 조회수 작성일
+		0 		ㅇ	ㅇㅇ	0		...
+		0 		ㅇ	ㅇㅇ	0		...
+		0 		ㅇ	ㅇㅇ	0		...
+
+		->html 하드코딩!
+
+		<div>
+			result: 1 / 안녕 / 심원용 / 10 / 1203
+		</div>
+		클릭한 행의 정보를 가져올 수 있는가
+	-->
+
+	<table class="table-dark table-striped">
+		<!-- 행4 열5 -->
+		<tr>
+			<th>글번호</th>
+			<th>제목</th>
+			<th>작성자</th>
+			<th>조회수</th>
+			<th>작성일</th>
+		</tr>
+		<tr>
+			<td>1</td>
+			<td>제목1</td>
+			<td>원드래곤</td>
+			<td>1</td>
+			<td>Date()</td>
+		</tr>
+		<tr>
+			<td>2</td>
+			<td>제목2</td>
+			<td>드래곤일</td>
+			<td>2</td>
+			<td>d</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>제목3</td>
+			<td>심원</td>
+			<td>3</td>
+			<td>d</td>
+		</tr>
+	</table>
+
+	result :
+	<div id="result">
+	</div>
+
+	<script>
+		/*
+		행을 클릭했을 때, 글번호 가져오기
+
+		1. 행 클릭했을 때 이벤트 발생시키기
+		2. 이벤트? 그 행의 첫번째 td 가져오기
+		3. td와 함께 그 안의 글자 가져오기
+		4. 가져온 글자를 result에 추가해주기
+		*/
+
+		$(function(){
+
+			$('tbody>tr').click(function(){
+				// console.log(this);
+				//this == tr
+				//this.children =th5개 또는 td 5개
+				// const num = $(this).children().eq(0).text();	//글번호
+				const num = $(this).children().text();
+				// console.log(num);
+
+				$('#result').text("");
+				$('#result').append(num);
+			})
+
+		})
+	</script>
+
+	<button>그냥버튼</button>
+	<button type="button" class="btn btn-primary">Primary</button>
+
+	<!-- Button to Open the Modal -->
+	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+		Open modal
+	</button>
+
+	<!-- The Modal -->
+	<div class="modal" id="myModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Modal Heading</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					Modal body..
+						<table class="table-dark table-striped">
+							<!-- 행4 열5 -->
+							<tr>
+								<th>글번호</th>
+								<th>제목</th>
+								<th>작성자</th>
+								<th>조회수</th>
+								<th>작성일</th>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>제목1</td>
+								<td>원드래곤</td>
+								<td>1</td>
+								<td>Date()</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>제목2</td>
+								<td>드래곤일</td>
+								<td>2</td>
+								<td>d</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>제목3</td>
+								<td>심원</td>
+								<td>3</td>
+								<td>d</td>
+							</tr>
+						</table>
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- index.html > 연결프로그램 > 크롬/vscode-->
+</body>
+</html>

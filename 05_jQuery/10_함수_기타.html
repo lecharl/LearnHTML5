@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<title>Document</title>
+	<style>
+		.c1{
+			background-color: red;
+		}
+		.c2{
+			background-color: blue;
+		}
+		.c3{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+	<script>
+		$(function(){
+			const arr = ['a', 'b', 'c'];
+
+			//for in
+			for (let i in arr) {
+				console.log(arr[i]);
+			}
+
+			//jquery로 for in 쓰는 방법
+			//1. $.each
+			$.each(arr, function(idx, value){
+				console.log(`${idx}번째 요소는 ${value}`);
+			})
+			$.each(arr, (idx, value) => console.log(`${idx}번째 요소는 ${value}`))
+
+			//2. $(arr).each
+			$(arr).each(function (idx, value) {
+				console.log(`${idx}번째 요소는 ${value}`);
+			})
+
+			console.log('----------------------------');
+			//객체배열을 만들고, forin문 사용해보기
+			/*
+				원하는 객체배열 아무거나 만들고, 각각의 모든 요소를 출력해보기
+			*/
+
+			const obj1 = [{
+				name: '1dragon',
+				age: 20,
+				job: 'teacher',
+			}, {
+					name: 'nico',
+					age: 30,
+					job: 'youtuber',
+				}];
+
+			$.each(obj1, function(idx, ele){
+				console.log(ele);
+			})
+
+			$(obj1).each((idx, value)=>console.log(idx, value))
+			console.log('================================================================');
+
+		})
+		</script>
+
+		<div id="area1">
+			<h1>1</h1>
+			<h1>2</h1>
+			<h1>3</h1>
+		</div>
+
+		<script>
+			// addClass
+			// $('.item').hover(
+			// 	()=>$(this).addClass('purple'),
+			// 	()=>$(this).removeClass('purple'));
+
+			// $('.c1').addClass('c2');
+			const h1Arr = $('#area1').children();
+			$(h1Arr).each(function(idx, ele){
+				$(ele).addClass('c'+(idx+1));
+			})
+
+			//className
+		</script>
+
+		<!-- is 함수 -->
+
+		<div id="isTest" class="ccc">isTest</div>
+		<div id="divArea">
+			<h1 class="cc">1</h1>
+			<h1 class="cc">2</h1>
+			<h1 class="cc">3</h1>
+			<h1>none</h1>
+		</div>
+
+		<script>
+			$(function(){
+				if($('#isTest').is('.ccc')){
+					console.log($('#isTest'));
+				}
+
+				// class가 cc인 친구들만 콘솔에 출력
+				const a = $('#divArea').children();
+				$(a).each((idx, ele)=>{
+					if($(ele).is('.cc')){
+						console.log(ele);
+					}
+				})
+			})
+
+		</script>
+</body>
+</html>
