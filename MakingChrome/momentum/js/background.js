@@ -1,8 +1,7 @@
 const images = [
-  // resources\image\river1.PNG 상대경로 복사, /로 편집
-  "/resources/image/river1.PNG",
-  "/resources/image/river2.PNG",
-  "/resources/image/tower1.PNG",
+  "../../resources/image/river1.PNG",
+  "../../resources/image/river2.PNG",
+  "../../resources/image/tower1.PNG",
 ];
 
 const chosenImages = images[Math.floor(Math.random() * images.length)];
