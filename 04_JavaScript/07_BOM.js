@@ -16,6 +16,7 @@ btn1.addEventListener("click", () => {
     "height=600"
     // , 'resizable=no'
   );
+  //이러고 나서 콘솔창에 window.open('http://www.google.com', 'naver') 하면, naver로 창이름이 등록된 창에서 구글이 열린다.
 });
 
 //2) 타이머 관련 메소드
@@ -66,7 +67,7 @@ btn3.addEventListener("click", () => {
   let area = document.getElementById("area3");
 
   area.innerHTML = "<h4>location 객체</h4>";
-  for (const key in locaton) {
+  for (const key in location) {
     area.innerHTML += `key : ${key}, value : ${location[key]}<br><br>`;
   }
 });
