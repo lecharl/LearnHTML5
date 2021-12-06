@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<!-- 클릭, 더블클릭 -->
+
+	<div id="target">target</div>
+
+	<script>
+		// $(function(){
+		// 	$("#target").click(function(){
+		// 		console.log('clicked~~~');
+		// 	})
+		// 	$("#target").dbclick(function(){
+		// 		console.log('dbclicked~');
+		// 	})
+		// })
+
+	</script>
+
+	<!-- 이벤트를 다른방법으로 걸어보기
+		on : 여러 이벤트 걸 수 있음
+	-->
+
+	<script>
+		$(function(){
+			// $("#target").on('click', function(){
+			// 	console.log("클릭됨~~~");
+			// })
+			$("#target").on(
+				{
+					'click': function(){console.log('클릭!');},
+					'dbclick': function(){console.log('더블클릭!');}
+				}
+			)
+		})
+	</script>
+
+	<br><br><br><br><br>
+
+	<div id="wrap">
+		<h1>h1111111111</h1>
+		<h2>h2222222222</h2>
+	</div>
+
+	<h3>여기는 div 밖임</h3>
+
+	<script>
+		$(function(){
+			// $('#wrap').on(이벤트명, 타겟, 함수)
+			// 자식 여러명 가져올 수 있음
+			$('#wrap').on('click', 'h1, h2', function(){
+				console.log('클릭됨ㅎㅎ');
+			})
+		})
+	</script>
+
+	<!-- 이벤트 한번만 걸고 싶다??
+		one
+	-->
+
+	<h1 id="ondTest">oneTest</h1>
+
+	<script>
+		$(function(){
+			$('#oneTest').one('click', function(){
+				console.log('원테스틐ㅋㅋㅋ');
+			})
+		})
+	</script>
+</body>
+</html>

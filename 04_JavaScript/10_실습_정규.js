@@ -1,5 +1,5 @@
 function validate() {
-  const id = document.getElementById("userId");
+  	const id = document.getElementById("userId");
 	const pwd1 = document.getElementById("userPwd1");
 	const pwd2 = document.getElementById("userPwd2");
 	const userName = document.getElementById("userName")
