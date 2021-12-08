@@ -24,8 +24,26 @@
 	<div class="black-background">
 		<div class="white-background">
 			<p>로그인하세요</p>
+			<form action="">
+				<div class="form-group">
+					<input type="email" class="form-control" placeholder="Email" id="email">
+				</div>
+				<div class="alert alert-warning" id="email-alert" role="alert">
+					이메일이 빈칸입니다.
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password" id="password">
+				</div>
+				<div class="alert alert-warning" id="pwd-alert" role="alert">
+					비밀번호가 빈칸입니다.
+				</div>
+				<button type="submit" class="btn btn-primary">전송</button>
+				<button type="button" class="btn btn-danger" id="modalClose">닫기</button>
+			</form>
+
 		</div>
 	</div>
+
 
 	<!-- nav 바 -->
 	<div class='nav-menu'>
@@ -53,21 +71,69 @@
 
 	<h1>Hello, world!</h1>
 
-
+	<!-- <input type="text" id="test-input"> -->
 
 	<script>
+
+		if(3 !== '3'){	//true/false
+			console.log('안녕');
+			// $('#test-input').val('안녕');
+		} else{
+			console.log('반가워');
+			// $('#test-input').val('반가워');
+		}
+
+
 		//Login버튼 누르면 모달창 띄우기
 		$('#loginBtn').on('click', ()=>{
+			//input.val 이 '안녕'이면
+			// if($('#test-input').val() == '안녕'){
+			// }
 			$('.black-background').fadeIn();
 			// $('.black-background').slideDown();
 		});
+		//닫기 버튼 누르면 모달창 닫기
+		$('#modalClose').click(()=>{
+			$('.black-background').fadeOut();
+			// $('.black-background').slideUp();
+		})
 
 		//Producst 누르면 list-group 보이게
 		$('#nav-sub-button').click(function(){
 			// $('.nav-sub').slideToggle();
 			$('.nav-sub').fadeToggle();
-
 		});
+
+		//폼이 전송될 때
+		// $('form').on('submit', function(event){})
+		$('form').submit(function(event){
+			//input에 입력된 값이 빈칸인 경우, 폼의 전송을 막음, 안내문 띄운다.
+			if($('#email').val() == ''){
+				event.preventDefault();
+				$('#email-alert').show();
+			}
+			if($('#password').val() == ''){
+				event.preventDefault();
+				$('#pwd-alert').show();
+			}
+		})
+
+		/*
+		이벤트
+		input : 값이 변경될 때 실행
+		change : 값이 변경되고 focus 잃을 때 실행
+		*/
+
+		//3의 배수에서 박수 한번, 9의 배수는 박수 두번, 나머지는 통과
+		function sam(sut) {
+			if(sut % 9 == 0){
+				console.log('박수x2');
+			} else if(sut % 3 == 0){
+				console.log('박수');
+			} else {
+				console.log('통과');
+			}
+		}
 
 	</script>
 

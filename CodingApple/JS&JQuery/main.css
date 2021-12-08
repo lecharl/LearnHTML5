@@ -49,3 +49,7 @@
 .nav-sub{
 	display: none;
 }
+
+.alert-warning{
+	display: none;
+}
