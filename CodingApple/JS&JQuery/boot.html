@@ -18,6 +18,21 @@
 </head>
 
 <body>
+
+	<div class="left-menu">
+		<p>Menu Title</p>
+	</div>
+
+	<script>
+		/*
+		animate({속성: 속성값, ...}, 숫자) : CSS 속성을 서서히 변경하고 싶을 때(숫자ms동안)
+		*/
+		// $('#hi').click(function(){
+		// 	$('#hi').animate({ marginLeft: '100px', marginTop: '100px' }, 500)
+		// })
+	</script>
+
+
 	<!-- modal
 		보통 body 맨 위에
 	-->
@@ -67,7 +82,19 @@
 		<hr class="my-4">
 		<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
 		<a class="btn btn-primary btn-lg" id="loginBtn" href="#" role="button">login</a>
-		</div>
+		<a class="btn btn-danger btn-lg" id="showLeft-menu" href="#" role="button">Show Menu</a>
+	</div>
+
+	<!-- show menu 버튼 누르면, 왼쪽 메뉴 슬그머니 나오게 -->
+	<script>
+		/*
+		animate({속성: 속성값, ...}, 숫자) : CSS 속성을 서서히 변경하고 싶을 때(숫자ms동안)
+		*/
+		// $('#hi').animate({ marginLeft: '100px', marginTop: '100px' }, 500)
+		$('#showLeft-menu').click(function(){
+			$('.left-menu').animate({ marginLeft: '0px'}, 500)
+		})
+	</script>
 
 	<h1>Hello, world!</h1>
 
@@ -85,17 +112,24 @@
 
 
 		//Login버튼 누르면 모달창 띄우기
+		/* 3. 자스로 트리거! */
 		$('#loginBtn').on('click', ()=>{
 			//input.val 이 '안녕'이면
 			// if($('#test-input').val() == '안녕'){
 			// }
-			$('.black-background').fadeIn();
+			// $('.black-background').fadeIn();
 			// $('.black-background').slideDown();
+			// $('.black-background').show().animate({marginTop: '0px'})
+			/* 2. 최종화면 만들기 */
+			// $('.black-background').css('transform', 'translateY(0px)');
+			// $('.black-background').css({transform: 'translateY(0px)'});
+			$('.black-background').addClass('slide-down')
 		});
 		//닫기 버튼 누르면 모달창 닫기
 		$('#modalClose').click(()=>{
-			$('.black-background').fadeOut();
+			// $('.black-background').fadeOut();
 			// $('.black-background').slideUp();
+			$('.black-background').addClass('slide-up')
 		})
 
 		//Producst 누르면 list-group 보이게
@@ -134,6 +168,19 @@
 				console.log('통과');
 			}
 		}
+
+		//이자율 계산하기
+		let 예금액 = 60000;
+		let 미래 = 0;
+
+		if(예금액 < 50000){
+			미래 = 예금액 * 1.15 * 1.15;
+		} else {
+			미래 = 예금액 * 1.2 * 1.2;
+		}
+		console.log(미래);
+
+
 
 	</script>
 
