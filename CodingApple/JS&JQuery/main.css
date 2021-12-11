@@ -11,9 +11,9 @@
 }
 
 .main-background{
-	background-image: url(../../resources/image/river1.PNG);
+	background-image: url(../../resources/image/tower1.PNG);
 	background-size: cover;
-	color: rgb(0, 0, 0);
+	color: white;
 	border-radius: 0px;
 }
 
@@ -24,10 +24,12 @@
 	/* 5 이상으로 : 부트스트랩이 1~4를 사용하기 때문에 5이상으로 해야 앞으로 나올 수 있다!! */
 	width: 100%;
 	height: 100%;
-	/* 1. 시작 화면 만들기 */
+
+	/* 2-1. 최종화면 나오게? */
 	display: block;
+	/* 1. 시작 화면 만들기 */
 	/* margin-top: 대신 이젠 transform */
-	transform: translateY(-1000px);
+	transform: translateY(-1010px);
 
 	/* 모든CSS속성이 변경될 때 ?초(1s)에 걸쳐서 서서히 변경됨 */
 	/* 4. 스무스한 동작은 animate 대신 transition!!! */
@@ -48,14 +50,40 @@
 }
 
 .nav-menu{
+	color: white;
 	display: flex;
 	justify-content: space-between;
 	padding: 15px;
 	align-items: center;
+
+	background: transparent;
+	/* 스크롤해도 화면 고정 */
+	position: fixed;
+	z-index: 5;
+	width: 100%;
 }
 
 .nav-sub{
 	display: none;
+}
+
+/* 최종화면 */
+.nav-black{
+	background: black;
+	color: white;
+	transition: all 0.5s;
+}
+
+.nav-large{
+	font-size: 30px;
+	transition: all 0.5s;
+}
+
+
+.nav-small{
+	font-size: 22px;
+	transition: all 0.5s;
+
 }
 
 .alert-warning{
@@ -68,7 +96,15 @@
 	background: black;
 	color: white;
 	position: fixed;
-	margin-left: -150px;
+
+	/* 2-1. 최종화면 */
+	display: block;
+	/* 1. 시작화면 : 숨기기 */
+	transform: translateX(-150px);
+
+	transition: all 0.5s;
+
+	/* margin-left: -150px; */
 	/* margin-left: 0px; */
 	/* 자스로 0 까지 천천히! */
 }
@@ -77,6 +113,90 @@
 	transform: translateY(0px);
 }
 
-.slide-up{
+/* .slide-up{
 	transform: translateY(-1000px)
+} */
+
+.slide-right{
+	transform: translateX(0px);
+}
+
+.slide-box{
+	/* ?vw뷰포트 위드 : 실제 브라우저 화면(뷰포트)의 위드의 몇퍼센트 차지할 건지 */
+	width: 100vw;
+	float: left;
+}
+
+.slide-container{
+	/* 브라우저 화면의 위드의 300퍼센트 */
+	width: 300vw;
+	/* 애니메이션 넣기, transform 속성만*/
+	transition: transform 0.5s;
+}
+
+.slide-left2{
+	/* 왼쪽으로 이동시키기, 사진크기만큼, 최종화면 */
+	transform: translateX(-100vw);
+}
+.slide-left3{
+	/* 왼쪽으로 이동시키기, 사진크기만큼, 최종화면 */
+	transform: translateX(-200vw);
+}
+
+.slide-box img{
+	/* 부모의 위드 100퍼센트 */
+	width: 100%;
+}
+
+.slide-before{
+	position: absolute;
+	top: 45%;
+	left: 0;
+	z-index: 5;
+}
+
+.slide-next{
+	/* 어떤 요소를 붕 띄워서 다른 요소와 겹치게 만들고 싶다면 */
+	position: absolute;
+	top: 45%;
+	right: 0;
+	/* z-index: 5; */
+}
+
+/* 탭 유아이 스타일 */
+ul.list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: 1px solid #ccc;
+}
+ul.list::after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.tab-button {
+	display: block;
+	padding: 10px 20px 10px 20px;
+	float: left;
+	margin-right: -1px;
+	margin-bottom: -1px;
+	color: grey;
+	text-decoration: none;
+	cursor: pointer;
+}
+.active {
+	border-top: 2px solid orange;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid white;
+	border-left: 1px solid #ccc;
+	color: black;
+	margin-top: -2px;
+}
+.tab-content {
+	display: none;
+	padding: 10px;
+}
+.show {
+	display: block;
 }

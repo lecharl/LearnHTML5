@@ -44,13 +44,13 @@
 					<input type="email" class="form-control" placeholder="Email" id="email">
 				</div>
 				<div class="alert alert-warning" id="email-alert" role="alert">
-					이메일이 빈칸입니다.
+					이메일 형식이 올바르지 않습니다.
 				</div>
 				<div class="form-group">
 					<input type="password" class="form-control" placeholder="Password" id="password">
 				</div>
 				<div class="alert alert-warning" id="pwd-alert" role="alert">
-					비밀번호가 빈칸입니다.
+					비밀번호 형식이 올바르지 않습니다.
 				</div>
 				<button type="submit" class="btn btn-primary">전송</button>
 				<button type="button" class="btn btn-danger" id="modalClose">닫기</button>
@@ -62,7 +62,7 @@
 
 	<!-- nav 바 -->
 	<div class='nav-menu'>
-		<h4 style="margin: 0">Shirts Studio</h4>
+		<h4 style="margin: 0" class="nav-large">Shirts Studio</h4>
 		<a id="nav-sub-button">Products</a>
 	</div>
 
@@ -73,6 +73,25 @@
 		<li class="list-group-item">Innerwear</li>
 		<li class="list-group-item">Shirts</li>
 	</ul>
+
+	<script>
+		// 스크롤바를 내리면 최종화면으로 변하게
+		// 최종화면 : nav-menu 의 background : white;
+		$(window).on('scroll', function(){
+			//window : viewport
+			//스크롤을 100px 했을 때 아래 최종화면 코드 실행
+			if($(window).scrollTop() > 100){
+				$('.nav-menu').addClass('nav-black');
+				$('.nav-menu h4').addClass('nav-small');
+			} else{
+				$('.nav-menu').removeClass('nav-black');
+				$('.nav-menu h4').removeClass('nav-small');
+			}
+		})
+		/*
+		$(window).scrollTop() : 스크롤 높이를 알려준다. px 단위
+		*/
+	</script>
 
 	<!-- jumbotron -->
 	<div class="jumbotron main-background ">
@@ -92,13 +111,124 @@
 		*/
 		// $('#hi').animate({ marginLeft: '100px', marginTop: '100px' }, 500)
 		$('#showLeft-menu').click(function(){
-			$('.left-menu').animate({ marginLeft: '0px'}, 500)
+			$('.left-menu').addClass('slide-right');
+			// $('.left-menu').animate({ marginLeft: '0px'}, 500)
+		})
+
+		$('.left-menu').click(function(){
+			$('.left-menu').removeClass('slide-right')
 		})
 	</script>
 
-	<h1>Hello, world!</h1>
+	<!-- Carousel -->
+	<!-- 부트스트랩 : y축 마진 주기 / 가운데 정렬
+		my-4 : 없을 땐 아래에 8만큼 마진 있었는데, 있으면 위아래 다 24만큼 마진
+	-->
+	<h4 class="my-4 text-center">Showcase</h4>
 
-	<!-- <input type="text" id="test-input"> -->
+	<!-- 넘치는 애들 숨겨주세요 -> 스크롤바 사라짐 -->
+	<div style="overflow: hidden; position: relative;">
+		<button class="slide-before">◀</button>
+		<div class="slide-container">
+			<div class="slide-box"><img src="../../resources/image/flower3.PNG"></div>
+			<div class="slide-box"><img src="../../resources/image/flower4.PNG"></div>
+			<div class="slide-box"><img src="../../resources/image/flower5.PNG"></div>
+		</div>
+		<button class="slide-next">▶</button>
+	</div>
+
+	<button class="slide-1">1</button>
+	<button class="slide-2">2</button>
+	<button class="slide-3">3</button>
+
+	<!-- 위아래 마진 48 -->
+	<div class="my-5">dddd</div>
+
+	<script>
+		//지금 보이는 사진
+		let nowImg = 1;
+
+		$('.slide-next').click(function(){
+			//사진1이면 2 : -100vw
+			//사진2이면 3 : -200vw
+			//사진3이면 1(처음으로) : 0
+			if(nowImg == 3){
+				$('.slide-container').css({transform: 'translateX(0vw)'});
+				nowImg = 1;
+			} else{
+				$('.slide-container').css({transform: 'translateX(-'+ nowImg +'00vw)'});
+				nowImg += 1;
+			}
+		});
+
+
+		$('.slide-before').click(function(){
+			//사진1이면 마지막사진(3)이 : -200vw
+			//사진2이면 1 : 0
+			//사진3이면 2 : -100vw
+			// --nowImg;
+			// $('.slide-container').css({transform: 'translateX(-' + nowImg +'00vw)'});
+			if(nowImg == 1){
+				$('.slide-container').css({transform: 'translateX(-200vw)'});
+				nowImg = 3;
+			} else{
+				$('.slide-container').css({transform: 'translateX(-'+ (nowImg-2) +'00vw)'});
+				nowImg -= 1;
+			}
+		})
+
+			/* 내가 한거
+			// 만약 지금 사진3이 보이면 사진1을 보여달라
+			if($('.slide-container').hasClass('slide-left3')){
+				$('.slide-container').removeClass('slide-left3');
+			} else if ($('.slide-container').hasClass('slide-left2')) {
+				// 만약 지금 사진2가 보이면 사진3을 보여달라
+				$('.slide-container').removeClass('slide-left2');
+				$('.slide-container').addClass('slide-left3');
+			} else{
+				// 그외:만약 지금 사진1이 보이면 사진2를 보여달라
+				$('.slide-container').addClass('slide-left2');
+			}
+			*/
+
+		$('.slide-1').click(function(){
+			$('.slide-container').removeClass('slide-left2');
+			$('.slide-container').removeClass('slide-left3');
+			// $('.slide-container').addClass('slide-left1');
+		})
+		$('.slide-2').click(function(){
+			// $('.slide-container').css({transform: 'translateX(-100vw)'});
+			// $('.slide-container').removeClass('slide-left1');
+			$('.slide-container').removeClass('slide-left3');
+			$('.slide-container').addClass('slide-left2');
+		})
+		$('.slide-3').click(function(){
+			// $('.slide-container').css({transform: 'translateX(-200vw)'});
+			// $('.slide-container').removeClass('slide-left1');
+			$('.slide-container').removeClass('slide-left2');
+			$('.slide-container').addClass('slide-left3');
+		})
+	</script>
+
+
+	<!-- 탭 유아이 -->
+	<div class="container mt-5" style="margin-bottom: ;">
+		<ul class="list">
+			<li class="tab-button">Products</li>
+			<li class="tab-button active">Information</li>
+			<li class="tab-button">Shipping</li>
+		</ul>
+
+		<div class="tab-content">
+			<p>상품설명입니다. Product</p>
+		</div>
+		<div class="tab-content show">
+			<p>상품정보입니다. Info</p>
+		</div>
+		<div class="tab-content">
+			<p>배송정보입니다. Shipping</p>
+		</div>
+	</div>
 
 	<script>
 
@@ -129,7 +259,7 @@
 		$('#modalClose').click(()=>{
 			// $('.black-background').fadeOut();
 			// $('.black-background').slideUp();
-			$('.black-background').addClass('slide-up')
+			$('.black-background').removeClass('slide-down')
 		})
 
 		//Producst 누르면 list-group 보이게
@@ -138,18 +268,50 @@
 			$('.nav-sub').fadeToggle();
 		});
 
+		/*
+		정규표현식
+		/정규표현식/.test('검사당할문자열')
+			-> (X) 정규식과 문자열이 동일하냐
+			-> (O) 정규식이 문자열에 포함되냐
+		/[A-z]/ : 대문자 A ~ 소문자 z
+		/\S/ : 특수문자 포함 모든 문자 **하나**
+		/\S+/ : 특수문자 포함 모든 문자 **여러개**
+		+ : 뒤에도 계속 찾아라
+		예) /\S@/ : 모든 문자 뒤에 @ 가 오냐
+
+		이메일 검사
+		/\S+@\S+\.\S+/
+		*/
+
+
 		//폼이 전송될 때
 		// $('form').on('submit', function(event){})
 		$('form').submit(function(event){
-			//input에 입력된 값이 빈칸인 경우, 폼의 전송을 막음, 안내문 띄운다.
-			if($('#email').val() == ''){
-				event.preventDefault();
+			//email의 value 가 이메일형식이 아니면 폼전송 x
+			let em = $('#email').val();
+			if(!/\S+@\S+\.\S+/.test(em) || em == '') {
 				$('#email-alert').show();
-			}
-			if($('#password').val() == ''){
 				event.preventDefault();
-				$('#pwd-alert').show();
 			}
+
+			//pwd 의 value에 대문자가 없으면 폼 전송 x
+			let pp = $('#password').val();
+			if(!/[A-Z]+/.test(pp)){
+				$('#pwd-alert').show();
+				event.preventDefault();
+			}
+
+
+
+			//input에 입력된 값이 빈칸인 경우, 폼의 전송을 막음, 안내문 띄운다.
+			// if($('#email').val() == ''){
+			// 	event.preventDefault();
+			// 	$('#email-alert').show();
+			// }
+			// if($('#password').val() == ''){
+			// 	event.preventDefault();
+			// 	$('#pwd-alert').show();
+			// }
 		})
 
 		/*
