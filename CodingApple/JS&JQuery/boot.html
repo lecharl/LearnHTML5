@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
 		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 
-	<link rel="stylesheet" href="./main.css">
-
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<link rel="stylesheet" href="./main.css">
 	<title>Hello, world!</title>
 </head>
 
@@ -58,6 +58,35 @@
 
 		</div>
 	</div>
+
+	<!-- 이벤트 버블링 : 이벤트가 상위요소로 퍼지는 현상
+		-> 우리가 하위요소를 클릭하는 이벤트를 만들었을 때, 그걸 클릭하면 브라우저는 그 상위요소까지 클릭한 거로 인식한다.
+	-->
+
+	<!-- 검은 배경 누르면 로그인창 닫게 -->
+	<script>
+		$('.black-background').click(function(event){
+			//만약에 지금 실제로 클릭한 게 검은배경일 때만 모달창 닫자
+			/*
+				e.target : 지금 실제로 클릭한 요소
+				e.currentTarget : 지금 이벤트리스너가 달린 요소
+				this = e.currentTarget
+				e.preventDefault() : 기본동작 막기
+				e.stopPropagation() : 내 상위요소로의 이벤트 버블링을 중단할 때
+			*/
+			// console.log(event.target);
+			// console.log(event.currentTarget);
+			// console.log(this);
+			// console.log('--------');
+			// if(event.target == event.currentTarget){
+				// this 와 비교해도 된다!!
+				$('.black-background').removeClass('slide-down');
+				// $('.black-background').hide();
+			// }
+			// event.target == $('.black-background') 하면 안된다!!!!!!!
+			// 왜?? 좌항은 js 우항은 jQuery 이기 때문에 안된다!!
+		})
+	</script>
 
 
 	<!-- nav 바 -->
@@ -128,18 +157,22 @@
 
 	<!-- 넘치는 애들 숨겨주세요 -> 스크롤바 사라짐 -->
 	<div style="overflow: hidden; position: relative;">
-		<button class="slide-before">◀</button>
+		<button type="button" class="btn btn-info slide-before">◀</button>
+		<!-- <button class="slide-before">◀</button> -->
 		<div class="slide-container">
 			<div class="slide-box"><img src="../../resources/image/flower3.PNG"></div>
 			<div class="slide-box"><img src="../../resources/image/flower4.PNG"></div>
 			<div class="slide-box"><img src="../../resources/image/flower5.PNG"></div>
 		</div>
-		<button class="slide-next">▶</button>
+		<!-- <button class="slide-next">▶</button> -->
+		<button type="button" class="btn btn-info slide-next">▶</button>
 	</div>
 
-	<button class="slide-1">1</button>
-	<button class="slide-2">2</button>
-	<button class="slide-3">3</button>
+	<div class="imgDiv">
+		<button type="button" class="btn btn-outline-dark slide-1">1</button>
+		<button type="button" class="btn btn-outline-dark slide-2">2</button>
+		<button type="button" class="btn btn-outline-dark slide-3">3</button>
+	</div>
 
 	<!-- 위아래 마진 48 -->
 	<div class="my-5">dddd</div>
@@ -214,9 +247,11 @@
 	<!-- 탭 유아이 -->
 	<div class="container mt-5" style="margin-bottom: 500px;">
 		<ul class="list">
-			<li class="tab-button">Products</li>
-			<li class="tab-button active">Information</li>
-			<li class="tab-button">Shipping</li>
+			<!-- **개발자만 알게 HTML에 몰래 정보심기 -->
+			<!-- data-작명="값" -->
+			<li class="tab-button" data-id="0">Products</li>
+			<li class="tab-button active" data-id="1">Information</li>
+			<li class="tab-button" data-id="2">Shipping</li>
 		</ul>
 
 		<div class="tab-content">
@@ -229,8 +264,27 @@
 			<p>배송정보입니다. Shipping</p>
 		</div>
 	</div>
-
 	<script src="./tab.js"></script>
+
+
+	<h4 id="title">상품제목</h4>
+	<p id="text">상품내용</p>
+	<div style="margin-bottom:500px"></div>
+
+	<!-- array 내의 데이터를 꺼내서 html에 넣어보자 -->
+	<script>
+		const proArr = [{ brand: 'BMW', model: 520 }, { brand: 'Volvo', model: 666}];
+		const proArr2 = [{ brand: 'BMW' }, { model: 520 }];
+
+		$('#title').html(proArr2[0].brand);
+		$('#text').html(proArr2[1].model);
+
+		$('#title').html(proArr[0].brand);
+		$('#text').html(proArr[0].model);
+
+	</script>
+
+
 
 	<script>
 

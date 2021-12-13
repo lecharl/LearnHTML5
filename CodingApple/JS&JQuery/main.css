@@ -200,3 +200,14 @@ ul.list::after {
 .show {
 	display: block;
 }
+
+.imgDiv{
+	text-align: center;
+}
+
+
+/* -------------- */
+
+.size-select{
+	display: block;
+}
