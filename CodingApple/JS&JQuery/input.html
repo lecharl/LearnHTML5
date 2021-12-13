@@ -68,7 +68,42 @@
 			}
 		})
 
-	</script>
+		</script>
+
+		<script>
+			// array & for 반복문 공부
+			const chulArr = ['흥민', '영희', '철수', '재석'];
+
+			function finding(name) {
+				for (const chul of chulArr) {
+					if(name == chul){
+						console.log('있어요');
+					}
+				}
+			}
+
+			//구구단 콘솔창 출력
+			function gugudan() {
+				for (let dan = 2; dan <= 9; dan++) {
+					for (let gop = 1; gop <= 9; gop++) {
+						console.log(`${dan} * ${gop} = ${dan*gop}`);
+					}
+				}
+			}
+
+			//판매실적 계산기
+			function 목표량계산기(어레이, 평균월별판매량) {
+				let 어레이총합 = 0;
+				어레이.forEach(ele => {
+					어레이총합 += ele;
+				});
+				// 어레이총합 /= 어레이.length;
+				const x = 평균월별판매량 * (어레이.length + 1) - 어레이총합;
+				// 평균월별판매량 = (어레이총합 + x)/
+				console.log(`12월엔 ${x}개를 팔아야 합니다.`);
+			}
+
+		</script>
 
 
 	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
