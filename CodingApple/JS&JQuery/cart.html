@@ -48,7 +48,7 @@
 	<div class="container my-4">
 		<button class="btn btn-danger" id="priceSort">낮은 가격순 정렬</button>
 		<button class="btn btn-danger" id="abcSort">가나다순 정렬</button>
-		<button class="btn btn-danger" id="under50">~50,000원</button>
+		<button class="btn btn-danger" id="under60">~60,000원</button>
 	</div>
 
 	<script>
@@ -88,24 +88,42 @@
 			// 		return 0;
 			// 	}
 			// })
+			//글자끼리 뺄셈을 하면 안된다!!!!!!!!! 크기 비교!!!!!!!
 			products.sort((a,b)=>{
 				return a.title < b.title? -1 : a.title < b.title? 1 : 0;
 			})
 			jinyeol(products);
 		})
 
-		// 50000원 이하만 필터
+		// 60000원 이하만 필터
 
-		$('#under50').click(()=>{
-			const newUnder50 = products.filter(p=>{
-				return p.price <= 50000;
+		$('#under60').click(()=>{
+			const newUnder60 = products.filter(p=>{
+				return p.price <= 60000;
 			})
+
+			/*
+			****html 동적으로 만들기 : 상품 개수에 맞게 상품목록 html 작성
+			*/
+			newUnder60.forEach(element => {
+				let templateOfList = `<div>상품</div>`;
+				$('.card-group').append(templateOfList)
+
+			});
+
 			$('.card').hide();
-			jinyeol(newUnder50);
-			for (let i = 0; i < newUnder50.length; i++) {
+			jinyeol(newUnder60);
+			for (let i = 0; i < newUnder60.length; i++) {
 				$('.card').eq(i).show();
 			}
 		})
+
+		/*
+		## 복사 방법(ES6 spread operator)
+		const 어레이 = [1, 2, 3];
+		const 어레이2 = [...어레이];
+		*/
+
 
 		/* 정렬
 		- 기존 배열 바꿈~!~!~!~!
