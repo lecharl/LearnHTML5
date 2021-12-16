@@ -18,7 +18,7 @@
 <body>
 
 	<div class="card-group container">
-		<div class="card">
+		<!-- <div class="card">
 			<img src="https://via.placeholder.com/600">
 			<div class="card-body">
 				<h5>Card title</h5>
@@ -41,35 +41,64 @@
 				<p>가격 : <span>70000</span></p>
 				<button class="btn btn-danger">주문하기</button>
 			</div>
-		</div>
+		</div> -->
 	</div>
 
 	<!-- 정렬기능 버튼 -->
 	<div class="container my-4">
 		<button class="btn btn-danger" id="priceSort">낮은 가격순 정렬</button>
+		<button class="btn btn-danger" id="priceNaerimSort">높은 가격순 정렬</button>
 		<button class="btn btn-danger" id="abcSort">가나다순 정렬</button>
-		<button class="btn btn-danger" id="under60">~60,000원</button>
+		<button class="btn btn-danger" id="under60">~60,000원</button><br>
+		<div class="my-1">
+			<input type="number" name="" id="filterInput" placeholder="가격을 적으세요.">
+			<button class="btn btn-danger my-1" id="filterUnder">~원 이하 검색</button><br>
+		</div>
+		<button class="btn btn-primary my-1" id="reset">초기화</button>
 	</div>
 
+
+
+
 	<script>
+
+		//html 템플릿
+		let templateOfList = `<div class="card">
+			<img src="https://via.placeholder.com/600">
+			<div class="card-body">
+				<h5>Card title</h5>
+				<p>가격 : <span>70000</span></p>
+				<button class="btn btn-danger">주문하기</button>
+			</div>
+		</div>`;
+		let emptyTemplate = `<div class="card">
+			</div>`;
+			// <img src="https://via.placeholder.com/600/FFFFFF">
+			// <div class="card-body">
+			// 	<h5></h5>
+			// 	<p><span></span></p>
+			// 	<button class="btn btn-danger"></button>
+			// </div>
+
+		/*
+		## 복사 방법(ES6 spread operator)
+		const 어레이 = [1, 2, 3];
+		const 어레이2 = [...어레이];
+		*/
+		//현재 상품목록 어레이
 		const products = [
 			{ id: 0, price: 70000, title: 'Blossom Dress' },
 			{ id: 1, price: 50000, title: 'Springfield Shirt' },
 			{ id: 2, price: 60000, title: 'Black Monastery' }
 		]
+		//복사한 상품목록 어레이
+		let tProducts = [...products];
 
+
+		makeHtml(products);
 		jinyeol(products);
 
-		$('#priceSort').click(()=>{
-			products.sort((a,b)=>{
-				//그냥 a-b하면 {} - {}, 즉 object끼리 계산하라는 의미
-				// return a-b;
-
-				return a.price - b.price;
-			})
-			jinyeol(products);
-		})
-
+		//array에서 title과 price를 꺼내 html에 붙여 진열하는 함수
 		function jinyeol(array) {
 			for (let i = 0; i < array.length; i++) {
 				$('.card-body>h5').eq(i).html(array[i].title);
@@ -77,8 +106,46 @@
 			}
 		}
 
+
+		/*
+		****html 동적으로 만들기 : 상품 개수(array의 길이)에 맞게 상품목록 html 작성
+		*/
+		function makeHtml(array) {
+			array.forEach(element => {
+				$('.card-group').append(templateOfList)
+			});
+		}
+
+// ------------------------------------------------
+
+		/****sort()는 원본을 바꾸므로!! 복사본으로!!!!!!!!*/
+		//가격순 정렬(오름차순)
+		$('#priceSort').click(()=>{
+			$('.card-group').html('');
+			tProducts.sort((a,b)=>{
+				// return a-b;
+				//그냥 a-b하면 {} - {}, 즉 object끼리 계산하라는 의미
+				return a.price - b.price;
+			})
+			makeHtml(tProducts);
+			jinyeol(tProducts);
+		})
+
+		//가격순 정렬(내림차순)
+		$('#priceNaerimSort').click(()=>{
+			$('.card-group').html('');
+			tProducts.sort((a,b)=>{
+				// return a-b;
+				//그냥 a-b하면 {} - {}, 즉 object끼리 계산하라는 의미
+				return b.price - a.price;
+			})
+			makeHtml(tProducts);
+			jinyeol(tProducts);
+		})
+
 		// 가나다순 정렬
 		$('#abcSort').click(()=>{
+			$('.card-group').html('');
 			// products.sort((a,b)=>{
 			// 	if(a.title < b.title){
 			// 		return -1;
@@ -89,34 +156,64 @@
 			// 	}
 			// })
 			//글자끼리 뺄셈을 하면 안된다!!!!!!!!! 크기 비교!!!!!!!
-			products.sort((a,b)=>{
+			tProducts.sort((a,b)=>{
 				return a.title < b.title? -1 : a.title < b.title? 1 : 0;
 			})
-			jinyeol(products);
+			makeHtml(tProducts);
+			jinyeol(tProducts);
 		})
 
+		/* filter() */
 		// 60000원 이하만 필터
 
 		$('#under60').click(()=>{
+			$('.card-group').html('');
 			const newUnder60 = products.filter(p=>{
 				return p.price <= 60000;
 			})
 
-			/*
-			****html 동적으로 만들기 : 상품 개수에 맞게 상품목록 html 작성
-			*/
-			newUnder60.forEach(element => {
-				let templateOfList = `<div>상품</div>`;
-				$('.card-group').append(templateOfList)
+			//가격 오름차순으로 정렬하자
+			newUnder60.sort((a,b)=>{
+				return a.price - b.price;
+			})
 
-			});
+			// if(newUnder60.length < products.length){
+			// 	for (let i = 0; i < products.length - newUnder60.length; i++) {
+			// 		newUnder60.push({ id: 999, price: 0, title: '' }).display.hidden();
+			// 	}
+			// }
 
-			$('.card').hide();
+			makeHtml(newUnder60);
 			jinyeol(newUnder60);
-			for (let i = 0; i < newUnder60.length; i++) {
-				$('.card').eq(i).show();
-			}
 		})
+
+		//사용자가 입력한 값에 따른 필터
+		$('#filterUnder').click(()=>{
+			$('.card-group').html('');
+			const newFilter = products.filter(p=>{
+				return p.price <= $('#filterInput').val();
+			})
+
+			//가격 오름차순으로 정렬하자
+			newFilter.sort((a,b)=>{
+				return a.price - b.price;
+			})
+
+			makeHtml(newFilter);
+			jinyeol(newFilter);
+		})
+
+		/* 초기화 */
+		$('#reset').click(()=>{
+			$('.card-group').html('');
+			makeHtml(products);
+			jinyeol(products);
+		})
+
+		// newUnder60.forEach(element => {
+		// 	let templateOfList = `<div>상품</div>`;
+		// 	$('.card-group').append(templateOfList)
+		// });
 
 		/*
 		## 복사 방법(ES6 spread operator)
