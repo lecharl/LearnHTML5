@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+	<h4 style="display: none;" id="hello">임시글씨</h4>
+
+	<!-- 상품 목록 -->
+	<div class="card" style="width: 18rem;">
+		<img src="..." class="card-img-top" alt="...">
+		<div class="card-body">
+			<h5 class="card-title">Card title</h5>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+				content.</p>
+			<a href="#" class="btn btn-primary">Go somewhere</a>
+		</div>
+	</div>
+	<button id="loadProducts" class="btn btn-danger">상품 불러오기</button>
+	<button id="no" class="btn btn-danger">버튼</button>
+
+	<p>
+
+		서버 : 접속자가 요청을 하면 데이터를 갖다 준다.<br>
+		요청 : get / post<br>
+		GET : url을 입력해서 요청함 -> 서버가 주는 데이터를 받아온다.(읽기) <br>
+		post : 숨겨서 뭔가 정보를(데이터를) 서버로 전달하거나 요청함(쓰기) <br>
+		ajax : 서버에다가 get/post요청을 할 수 있게 도와주는데, 새로고침없이 요청할 수 있다.
+	</p>
+
+	<script>
+		//url에 get요청을 해서 보내주는 data를 가져와라
+		$.ajax({
+			url : 'https://codingapple1.github.io/hello.txt',
+			type : 'GET',
+		//가져온 데이터를 확인하기
+		}).done(function(data){
+			console.log(data);
+
+		//ajax 실패시 실행
+		}).fail(function(){
+
+		//ajax 요청시 항상 실행
+		/* 예) 로딩중입니다 */
+		}).always(function(){
+
+		})
+
+		//버튼을 누르면 '임시글씨'가 가져온 데이터로 바꾸기
+		$('#no').on('click', function(){
+			$.ajax({
+				url : 'https://codingapple1.github.io/hello.txt',
+				type : 'get',
+			}).done(function(data){
+				$('#hello').html(data);
+			})
+		})
+
+		/* 상품불러오기 버튼 누르면 ajax 요청으로 상품 불러오자
+		brand: "Hyundai"
+		img: "https://codingapple1.github.io/kona.jpg"
+		model: "Kona"
+		price: 30000
+
+		*/
+
+		$('#loadProducts').click(()=>{
+			$.ajax({
+				url : 'https://codingapple1.github.io/data.json',
+				type: 'get'
+			}).done(function(productObject){
+				$('.card>img').attr({src : productObject.img});
+				$('.card-title').html(productObject.model);
+				$('.card-text').html(`brand : ${productObject.brand} <br> price : ${productObject.price}`);
+			})
+		})
+	</script>
+
+
+
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+		crossorigin="anonymous"></script>
+</body>
+</html>
