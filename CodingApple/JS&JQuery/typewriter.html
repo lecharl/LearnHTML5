@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+		integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+	<!-- jQuery -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<title>Document</title>
+</head>
+
+<body>
+
+	<div>
+		<button class="btn btn-primary">버튼</button>
+		<h1>abcde</h1>
+	</div>
+
+
+	<script>
+		//버튼 누르면 0.2초 뒤에 h1에 abcde....
+		//먼저 h1 내용 지워야
+		const eleH1 = document.querySelector('h1');
+		let originH1 = eleH1.innerHTML;
+
+		$('.btn-primary').on('click', function(){
+			typing(eleH1, originH1);
+		});
+
+		function typing(ele, oriText) {
+			ele.innerHTML = '';
+			for (let i = 0; i < oriText.length; i++) {
+				setTimeout(function () {
+					/* +h1에 원래 있던 첫째 글자 */
+					ele.innerHTML += oriText[i];
+				}, 200*i);
+			}
+		}
+
+		/* 한글 자모음 타이핑은 애니메이션은 라이브러리 찾아보자!! */
+	</script>
+
+
+	<!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

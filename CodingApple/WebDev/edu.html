@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	<!--
+		---
+
+		box-sizing: content-box(기본값)
+		- width:100% : 패딩과 보더 **제외**!!!! 그래서 스크롤이 생겨버린다!!
+		-> 그래서 걍 안쓰면 됨...?
+
+		box-sizing: border-box(보더까지 width에 포함)
+
+		section div.. 등을 inline-block 했는데 안붙는 이유
+		- 그 사이의 공백문자가 있기 때문
+		-> 해결 : 부모 {font-size: 0} 으로 하면 된다!!
+		-> ✨그 후 자식요소들을 {font-size: 1rem} 하면 끝
+
+		rem : html이 정한 기본 폰트 사이즈, 1rem이 기본
+
+
+		---
+
+		vertical-align : top
+
+		.container{
+			//브라우저 너비가 1000px을 넘어가면 고정, 그 안에는 자유롭게
+			max-width: 1000px;
+			//양옆 여백 나눠 갖기
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		---
+
+		float: left ... 를 하면
+		-> ✨✨자식들이 float면, ✨✨✨부모는 {height: 0}
+		-> float: 붕 ~ 떠있는 것이기 때문에 부모는 이 자식을을 품고 있다고 인지를 못한다!!
+
+		### 옛날 방법
+		- 반드시 다음 요소를 ✨✨<div style="clear: both"></div> 한다!!!
+
+		### 현재 방법 : <부모:after {}> 가상 요소 추가
+		- ✨✨
+		.container:after{
+			content: '';
+			display: block;
+			clear: both;
+			//혹시 모르니 추가하는 아래것들
+			height: 0;
+			visibility: hidden;
+		}
+
+		=======반응형
+		@media : 미디어쿼리
+		---
+		@media screen and (min-width: 700px){
+		//screen / 너비가 최소 700px(700px 이상)일때 아래 코드 실행
+			.item{
+				display: inline-block;`
+			}
+		}
+
+		------------------------
+
+
+		## 부모요소(예: div.container) <{display: flex }>
+		- container의 자식요소(예: div.item)의 컨텐츠만큼 자동 조절됨
+		-> 자동으로 ㅣㅣㅣ 이런 식으로 item들이 좌->우로 배치된다.
+
+		---
+
+		## 부모 container <{flex-direction: }>
+
+			### {flex-direction: row} (기본값)
+			- 위에
+
+			### {flex-direction: column}
+			- item들이 三 이런 식으로 상->하로 배치된다.
+
+			### {flex-direction: row-reverse}
+			- item들이 ㅣㅣㅣ 이런식인데 좌<-우로 배치된다.
+
+			### {flex-direction: column-reverse}
+			- item들이 三 이런식인데 상<-하로 배치된다.
+
+		---
+
+		## 부모 container <{flex-wrap: }>
+			### flex-wrap: nowrap (기본값)
+			- 브라우저 크기를 줄여도 item들의 위치 그대로
+
+			### {flex-wrap: wrap}
+			- 브라우저 크기를 줄이면 그만큼 item들의 위치가 바뀜
+			- item 중 맨 마지막 요소부터
+
+			### {flex-wrap: wrap-reverse}
+			- 브라우저 크기를 줄이면 그만큼 item들의 위치가 바뀜
+			- item 중 맨 처음 요소부터
+
+		---
+
+		## 부모 container <{justify-content: }>
+		- ㅣㅣㅣ 이렇게 있는 꼬치가 있다면 그걸 꽂는 꼬치 ㅡㅡㅡ <- 라고 생각하자
+		- ㅡㅡㅡ <- 이걸 기준으로 **좌우← →**로 정렬
+
+			### {justify-content: start} (기본값)
+			- item들을 왼쪽 정렬
+
+			### {justify-content: end}
+			- item들을 오른쪽 정렬
+
+			### {justify-content: center}
+			- item들을 가운데 정렬
+
+			### {justify-content: space-between}
+			- item들을 양옆에 붙이고 여백을 같게 배치
+
+			### {justify-content: space-around}
+			- item들을 양옆에서 띄우고 여백을 같게? 배치
+
+		----
+
+		## 부모 container <{align-items: }>
+		- ㅣㅣㅣ 이렇게 있는 꼬치가 있다면 그걸 꽂는 꼬치 ㅡㅡㅡ <- 라고 생각하자
+		- ㅡㅡㅡ <- 이걸 기준으로 **상하↑ ↓**로 정렬
+
+			### {align-items: stretch} (기본값)
+			- item들을 스트레칭하듯 위아래로 쭈욱~~ 꽉차게
+			- 컨텐츠 상관없을걸?
+
+			### {align-items: flex-start}
+			- item들을 완전 top 위에 딱! 붙음
+			- 컨텐츠 양만큼만 보임
+
+			### {align-items: flex-end}
+			- item들을 완전 bottom 아래에 딱! 붙음
+			- 컨텐츠 양만큼만 보임
+
+			### {align-items: center}
+			- item들을 위아래 중 가운데에
+
+			??? 만약 좌우&&상하로 가운데정렬 하고 싶으면??
+			-> justify-content:center,  align-items: center
+
+		---
+
+		## 부모 container <{align-content: }>
+		- **{flex-wrap: wrap} 을 해야 알 수 있다~!
+		- ㅡㅡㅡ <- 이걸 기준으로 **상하↑ ↓**로 정렬
+
+			### {align-content: flex-start}
+			- item들을 완전 top 위에 딱! 붙음
+			- 컨텐츠 양만큼만 보임
+			- + 브라우저 크기를 줄이면 item들 위치가 뚝
+
+			### {align-content: flex-end}
+			- item들을 완전 bottm 위에 딱! 붙음
+			- 컨텐츠 양만큼만 보임
+			- + 브라우저 크기를 줄이면 item들 위치가 뚝
+
+			### {align-content: center}
+			- item들을 위아래 중 가운데에
+			- 컨텐츠 양만큼만 보임
+			- + 브라우저 크기를 줄이면 item들 위치가 뚝
+
+			### {align-content: space-between}
+			- item들을 위아래에 붙이고 여백을 같게 배치
+			- 컨텐츠 양만큼만 보임
+			- + 브라우저 크기를 줄이면 item들 위치가 뚝
+
+			### {align-content: space-around}
+			- item들을 위아래에서 띄우고 여백을 같게? 배치
+			- 컨텐츠 양만큼만 보임
+			- + 브라우저 크기를 줄이면 item들 위치가 뚝
+
+		=======
+		# 자식 .item / 각각 한다면 .item:nth-child(숫자) 이런식으로
+
+		## 자식 item {flex-grow: 숫자}
+		- 여백없이 꽉 차게 만든다.
+		- **flex-grow를 적용하기 전 남은 여백**을 숫자만큼 item들이 나눠가져 크기를 늘린다.
+			###
+			.item{
+				flex-grow: 1
+			}
+			**flex-grow를 적용하기 전 남은 여백**을 1:1:....:1 만큼
+
+			###
+			.item:nth-child(1){
+				flex-grow: 1
+			}
+			.item:nth-child(2){
+				flex-grow: 2
+			}
+			.item:nth-child(3){
+				flex-grow: 1
+			}
+			**flex-grow를 적용하기 전 남은 여백**을 1:2:1 만큼
+
+		----
+
+		??? 그러면 실제로 크기를 내가 원하는 대로 나눠갖게 하려면???
+		💖 첫번째 방법
+		## 자식 클래스 <.item { flex-basis: }>
+			###
+			.item{
+				flex-basis: 0;
+			}
+			- ✨✨브라우저 전체를 여백으로 인식해서, 각각 {flex-grow: 숫자} 만큼 크기를 나눠갖는다.
+
+			###
+			.item{
+				flex-basis: auto (기본값)
+			}
+			- 위의 경우(**flex-grow를 적용하기 전 남은 여백**을 1:2:1 만큼)와 같다
+
+		💖 두번째 방법
+		## 자식 <.item:nth-child(숫자){ flex:숫자}>
+			###
+			.item:nth-child(1){
+				flex: 1;
+			}
+			.item:nth-child(2){
+				flex: 2;
+			}
+			.item:nth-child(3){
+				flex: 1;
+			}
+			- ✨✨브라우저 전체를 여백으로 인식해서, 각각 {flex: 숫자} 만큼 크기를 나눠갖는다.
+			- 이때 {flex-basis: 0%} 자동으로!!!
+
+		---
+
+		??? 각각 적용해서 flex 할 수 있다.
+			###
+			.item:nth-child(1){
+				width: 20px;
+			}
+			.item:nth-child(2){
+				flex: 1;
+			}
+			- 첫번째건 20px만큼 고정, 두번째 것만 나머지를 꽉차게 차지
+			- 첫번째를 지정하지 않았으면, 딱 컨텐츠만큼
+
+		---
+
+		## 자식 각각을 적용해서 정렬할 수 있다. : < {align-self: }
+			###
+			.item:nth-child(1){
+				align-self: flex-start;
+			}
+			.item:nth-child(2){
+				align-self: center;
+			}
+			.item:nth-child(3){
+				align-self: flex-end;
+			}
+			- 1은 (왼쪽)위, 2는 중앙, 3은 (오른쪽)아래
+
+		---
+
+		## 자식 item 각각 위치 바꾸기 : < {order: 숫자}>
+			###
+			.item:nth-child(1){
+				order: 2;
+			}
+			.item:nth-child(2){
+				order: 3;
+			}
+			.item:nth-child(3){
+				order: 1;
+			}
+			- 이러면 세번째, 첫번째, 두번째 item이 순서대로 배치된다.
+
+		---
+		================================
+
+		## 부모 .containter {display: grid;}
+		- 9개가 三 이런식으로 나열되어 있을 때
+
+		## 부모 .containter {grid-template-columns: }
+			###
+			.containter{
+				grid-template-columns: 4fr 6fr;
+			}
+			- 브라우저 좌우를 4:6 비율로 나눠 갖고
+			- **나열된 fr 개수만큼** 열 개수, 여기선 2개 이므로 ㅣㅣ
+			- 1 2 / 다음줄 3 4 / .... 7 8 / 9 빈공간 / 이런식으로 된다.
+
+			###
+			.containter{
+				grid-template-columns: repeat(3, 1fr);
+				// : 1fr 1fr 1fr 와 같다!!
+			}
+			- 열 개수는 3, ㅣㅣㅣ
+			- 브라우저 좌우를 1:1:1 비율로
+
+			??? 만약 특정 열만 고정시키고 싶다면?
+			###
+			.containter{
+				grid-template-columns: 200px 1fr;
+			}
+			- 두번째 열만 브라우저 크기따라 늘어났다가 줄어들었다가 한다.
+			- 고정크기 단위 : px rem em ..
+
+		---
+
+		## 부모 .containter {grid-gap: }
+			###
+			.containter{
+				grid-gap: 1rem;
+			}
+			- 각 item들의 간격을 1rem만큼(창문처럼!)
+
+		---
+
+		## 부모 .containter {grid-auto-rows: 크기}
+		- 각 행의 크기를 정할 수 있다.
+			###
+			.container{
+				grid-auto-rows: 200px;
+			}
+			- 원래는 컨텐츠 영역만큼, 가장 큰 컨텐츠만큼 높이를 갖지만,
+			- 고정으로 정해줄 수 있다.
+
+			?? 만약 컨텐츠에 비해 작다면??
+			-> 컨텐츠가 흘러 넘친다..
+
+			###
+			.container{
+				grid-auto-rows: minmax(200px, auto);
+				grid-auto-rows: minmax(10em, auto);
+				//폰트의 10배 크기만큼
+			}
+			- 각 행의 높이를 최소 200px만큼 정하지만, 모자라다면 컨텐츠만큼 늘어난다.
+
+		---
+
+		## 그리드 안에서 정렬
+
+		- 여기에 {justify-items: } / {align-items: } 를 적용해서
+		-> item들을 정렬할 수 있다.
+
+		=======
+
+		## item 각각을 정렬 한다면?
+			###
+			.item:nth-child(숫자){
+				justify-self: start;
+				align-self: center;
+			}
+			이런식으로!
+
+		---
+
+		## item 각각의 크기를 정한다면? : 자식 {grid-column: }, {grid-row: }
+		- 3x3 으로 되어있다면, 여기서 column : ㅣㅣㅣㅣ이므로
+		-> column은 1, 2, 3, 4 라고 하자...
+		- row : 三 .. 이ㅁ로
+		-> row는 1, 2, 3, 4 라고 하자...
+
+			###
+			.item:nth-child(1){
+				grid-column: 1/4;
+			}
+			- 1번 item이 column 1부터 4까지 차지하고, 나머진 자동으로
+
+			.item:nth-child(4){
+				grid-column: 3;
+				grid-row: 2/4;
+			}
+			- 4번 item이 row 2부터 4까지 차지하고, 나머진 자동으로
+			- 그런데 이것만 하면 자동으로? ✨column=1 에 위치하게 된다!!
+			-> ✨✨{grid-column: 3}으로 하면 column=3 에 위치시킨다!!
+
+			✨✨그런데 이러면 총 행의 개수가 4 가 된다! 이걸 기억!
+
+			.item:nth-child(9){
+				grid-column: 3;
+				grid-row: 3/5;
+			}
+			- 9번 item이 row 3부터 5까지 차지하고, 나머진 자동으로
+			- 이것도 마찬가지로 column위치를 3을 바꿈
+			- ✨이러면 4번, 9번 item이 겹치게 된다! 한쪽이 다른쪽을 미는게 아니라!
+
+
+	-->
+</body>
+</html>

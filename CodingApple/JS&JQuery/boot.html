@@ -13,6 +13,10 @@
 	<!-- jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
+	<!-- Hammer.js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js"
+		integrity="sha256-eVNjHw5UeU0jUqPPpZHAkU1z4U+QFBBY488WvueTm88=" crossorigin="anonymous"></script>
+
 	<link rel="stylesheet" href="./main.css">
 	<title>Hello, world!</title>
 </head>
@@ -78,11 +82,11 @@
 			// console.log(event.currentTarget);
 			// console.log(this);
 			// console.log('--------');
-			// if(event.target == event.currentTarget){
+			if(event.target == event.currentTarget){
 				// this 와 비교해도 된다!!
 				$('.black-background').removeClass('slide-down');
 				// $('.black-background').hide();
-			// }
+			}
 			// event.target == $('.black-background') 하면 안된다!!!!!!!
 			// 왜?? 좌항은 js 우항은 jQuery 이기 때문에 안된다!!
 		})
@@ -224,6 +228,69 @@
 			}
 			*/
 
+
+		/* 터치이벤트 : Hammer.js 이용방법
+
+		const 이미지1 = document.querySelectorAll('.slide-box img')[0];
+
+		const 매니저 = new Hammer.Manager(이미지1);
+		매니저.add(new Hammer.Pan({threshold: 100}));		: 요소등록
+
+		매니저.on('pan', function(e){
+			console.log(e.deltaX);
+			// : 이동한 거리(x축) == 슬라이드한 만큼 -> 방향도 파악
+
+			//만약에 왼쪽으로 그림을 슬라이드했을 때..(왼쪽으로 슬라이드 하면 항상 음수)
+			if(e.deltaX < -1){
+
+				$('.slide-container').css('transform', `translateX(${e.deltaX}px)`);
+				//이미지2가 나와야 한다.
+			}
+		})
+
+		Pan() : 일반 터치슬라이드
+		rotate() : 빙글빙글 돌리기??
+		pinch() : 확대/축소
+
+		threshold 숫자: 작동되는 최솟값
+		예) 터치해서 100만큼 이동했을 때 Pan()이벤트 발생시켜라
+		-> 0이면 바로 이벤트 발생
+		 */
+
+		const img1 = document.querySelectorAll('.slide-box img')[0];
+		const manager1 = new Hammer.Manager(img1)
+		manager1.add(new Hammer.Pan({threshold:0}));
+		manager1.on('pan', function(e){
+			console.log(e.deltaX);
+			//만약 왼쪽으로 그림을 슬라이드했을 때
+			if(e.deltaX < 0){
+				//slide-container를 슬라이드한 만큼 이동해라
+				$('.slide-container').css('transform', `translateX(${e.deltaX}px)`);
+
+				//만약 마우스를 놓으면
+				//isFinal : 터치가 끝났는지 알려준다.
+				if(e.isFinal && nowImg == 1){
+					//***터치가 끝난 순간에만 잠깐! transition속성을 추가하고 싶다!!!!
+					$('.slide-container').addClass('transforming');
+					//두번째 이미지로
+					$('.slide-container').css('transform', 'translateX(-100vw)')
+					//****0.5초 뒤 transforming 없애자
+					setTimeout(function(){
+						$('.slide-container').removeClass('transforming');
+					}, 500);
+
+				}
+			}
+		})
+
+		/*
+		사실 터치기능이 있는 carousel 라이브러리를 설치하면 된다.
+		*/
+
+
+
+
+		// 아래 버튼 3개
 		$('.slide-1').click(function(){
 			$('.slide-container').removeClass('slide-left2');
 			$('.slide-container').removeClass('slide-left3');

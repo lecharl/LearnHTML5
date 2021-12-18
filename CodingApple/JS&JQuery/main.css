@@ -131,12 +131,17 @@
 	/* 브라우저 화면의 위드의 300퍼센트 */
 	width: 300vw;
 	/* 애니메이션 넣기, transform 속성만*/
+	/* transition: transform 0.5s; */
+}
+
+/* -------이거만 hammer.js ----*/
+.transforming{
 	transition: transform 0.5s;
 }
 
 .slide-left2{
 	/* 왼쪽으로 이동시키기, 사진크기만큼, 최종화면 */
-	transform: translateX(-100vw);
+	/* transform: translateX(-100vw); */
 }
 .slide-left3{
 	/* 왼쪽으로 이동시키기, 사진크기만큼, 최종화면 */
