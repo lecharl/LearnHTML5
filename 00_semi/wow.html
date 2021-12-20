@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<style>
+		body {
+			font-family: Arial, Helvetica, sans-serif;
+			margin: 0;
+		}
+
+		.container {
+			display: flex;
+		}
+
+		.row{
+			justify-content: end;
+		}
+
+		.navbar {
+			overflow: hidden;
+			background-color: rgba(121, 3, 29, .6);
+			/* max-width: 50%; */
+			float: right;
+			width: 32vw;
+		}
+
+		.navbar a {
+			float: right;
+			font-size: 16px;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		.subnav {
+			/* float: right; */
+			overflow: hidden;
+		}
+
+		.subnav .subnavbtn {
+			font-size: 16px;
+			border: none;
+			outline: none;
+			color: white;
+			padding: 14px 16px;
+			background-color: inherit;
+			font-family: inherit;
+			margin: 0;
+		}
+
+
+
+		.navbar a:hover,
+		.subnav:hover .subnavbtn {
+			background-color: #79031D;
+		}
+
+		.subnav-content {
+			overflow: hidden;
+			/* top: 5%; */
+			/* left: 60%; */
+			width: 32vw;
+			/* transform: translate(20%); */
+			float: left;
+			display: none;
+			position: absolute;
+			/* right: 10; */
+			background-color: rgba(0, 4, 7, .6);
+			/* width: 100%; */
+			z-index: 1;
+		}
+
+		.subnav-content a {
+			float: left;
+			color: white;
+			text-decoration: none;
+			overflow: hidden;
+		}
+
+		.subnav-content a:hover {
+			background-color: rgba(0, 4, 7, .6);
+			color: white;
+		}
+
+		.subnav:hover .subnav-content {
+			display: block;
+			overflow: hidden;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="navbar container">
+
+
+		<div class="subnav row">
+			<button class="subnavbtn">운동루틴</button>
+			<div class="subnav-content mr-auto">
+				<a href="#company">부위별 운동</a>
+				<a href="#team">전신 운동</a>
+			</div>
+		</div>
+		<div class="subnav row">
+			<button class="subnavbtn">칼로리계산</button>
+			<div class="subnav-content">
+				<a href="#bring">음식별</a>
+				<a href="#deliver">운동별</a>
+				<a href="#package">일일 권장</a>
+			</div>
+		</div>
+		<div class="subnav row">
+			<a href="#contact">운동장소</a>
+			<!-- <button class="subnavbtn">운동장소 <i class="fa fa-caret-down"></i></button>
+			<div class="subnav-content">
+				<a href="#link1">Link 1</a>
+				<a href="#link2">Link 2</a>
+				<a href="#link3">Link 3</a>
+				<a href="#link4">Link 4</a>
+			</div> -->
+		</div>
+		<div class="subnav row">
+			<button class="subnavbtn">커뮤니티</button>
+			<div class="subnav-content">
+				<a href="#bring">자유게시판</a>
+				<a href="#deliver">갤러리</a>
+				<a href="#package">루틴공유</a>
+				<a href="#express">문의</a>
+			</div>
+		</div>
+		<div class="subnav row">
+			<button class="subnavbtn">마이페이지 </button>
+			<div class="subnav-content">
+				<a href="#link1">회원정보</a>
+				<a href="#link2">글/댓글 보기</a>
+				<a href="#link3">캘린더</a>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

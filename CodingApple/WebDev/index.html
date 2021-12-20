@@ -38,7 +38,10 @@
 				</a>
 
 				<!-- 토글러 -->
-				<!-- 아래 aria- 는 뭔지 찾아봐야겠다!!! -->
+				<!-- 아래 aria- 는 뭔지 찾아봐야겠다!!!
+					- 다양한 브라우징 습관이나 신체 장애가 있는 유저들을 위한 것
+					- 반응형 웹과 앱
+				-->
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"
 				aria-controls="collapsibleNavbar" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
@@ -47,7 +50,7 @@
 				<!-- nav바 메뉴들 -->
 				<div class="collapse navbar-collapse" id="collapsibleNavbar">
 					<!-- ul.navbar-nav>(li.nav-item>a.nav-link)*5 -->
-					<!-- mr-auto 마진오토는 왜? -->
+					<!-- mr-auto : 이래야 버튼들과 사이가 멀어진다!!! -->
 					<ul class="navbar-nav mr-auto">
 						<li class="nav-item"><a href="./index.html" class="nav-link">홈</a></li>
 						<li class="nav-item"><a href="#" class="nav-link">온라인 집들이</a></li>
@@ -57,8 +60,8 @@
 					</ul>
 					<!-- 로그인 및 회원가입 버튼 -->
 					<!-- ✨✨✨ul 과 같은 레벨로 만들어야 함!! -->
-					<!-- btn-sm : 버튼 사이즈 작게? -->
-					<!-- mr-2 : 마진 -->
+					<!-- btn-sm : 버튼 사이즈 작게 -->
+					<!-- mr-2 : margin-right 0.5rem == 8px -->
 					<button type="button" class="btn btn-sm btn-light mr-2">로그인</button>
 					<button type="button" class="btn btn-sm btn-light">회원가입</button>
 				</div>
@@ -67,11 +70,114 @@
 
 		</nav>
 
-		<section>
+		<section id="sec0" class="container-xl">
+			<!-- 반드시!! container가 있어야 row가 존재한다!! -->
+			<!-- 반드시!! row가 있어야 col이 존재한다!! -->
+			<div id="sec1" class="row">
+				<div class="col-12">
+					<div class="input-group my-5">
+						<!-- form-control : 좌우꽉차게 && 적당한 패딩 -->
+						<input type="text" class="form-control" name="" id="" placeholder="검색어를 입력해주세요."
+						onkeyup="searching(this.value)">
+						<!-- onkeyup="함수명()" : 키보드 타자를 칠때마다 이벤트 발생, 함수를 호출
+							-> 함수를 불러 this.value를 매개변수로 넘김
+						-->
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<!-- .col- /
+					.col-xs- : for 스마트폰 (부트스트랩5부터)
+					.col-sm- : for 태블릿
+					.col-md- : for 랩탑
+					.col-lg- : for 랩탑, 데스크탑
+					, 합이 12
+				-->
+				<div class="col-8" style="background: orange;">
+					<h2 class="mb-5">모든 상품 리스트</h2>
+					<div class="card-deck">
+						<!-- 카드 하나 레이아웃 -->
+						<div class="card" style="width: 18rem;">
+							<img src="./src/pr1.JPG" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h4 class="card-title">Title</h4>
+								<p class="card-text">BrandName</p>
+							</div>
+							<div class="card-footer">
+								<div class="price">Price <small class="ml-4">00000</small></div>
+							</div>
+						</div>
+						<!-- 카드 하나 끝 -->
+						<!-- 카드 하나 레이아웃 -->
+						<div class="card" style="width: 18rem;">
+							<img src="./src/pr1.JPG" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h4 class="card-title">Title</h4>
+								<p class="card-text">BrandName</p>
+							</div>
+							<div class="card-footer">
+								<div class="price">Price <small class="ml-4">00000</small></div>
+							</div>
+						</div>
+						<!-- 카드 하나 끝 -->
+						<!-- 카드 하나 레이아웃 -->
+						<div class="card" style="width: 18rem;">
+							<img src="./src/pr1.JPG" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h4 class="card-title">Title</h4>
+								<p class="card-text">BrandName</p>
+							</div>
+							<div class="card-footer">
+								<div class="price">Price <small class="ml-4">00000</small></div>
+							</div>
+						</div>
+						<!-- 카드 하나 끝 -->
+						<!-- 카드 하나 레이아웃 -->
+						<div class="card" style="width: 18rem;">
+							<img src="./src/pr1.JPG" class="card-img-top" alt="...">
+							<div class="card-body">
+								<h4 class="card-title">Title</h4>
+								<p class="card-text">BrandName</p>
+							</div>
+							<div class="card-footer">
+								<div class="price">Price <small class="ml-4">00000</small></div>
+							</div>
+						</div>
+						<!-- 카드 하나 끝 -->
+
+					</div>
+
+
+				</div>
+				<div class="col-4" style="background: beige;">
+					<h2 class="mb-5">장바구니</h2>
+
+					<div id="basket">
+						<div class="col-12">
+							<div id="dropArea" class="my-3 droppable">이곳에 상품을 놓아주세요.</div>
+							<div id="basketList">ddd</div>
+							<div class="mb-3 text-right">총 합계
+								<span id="total">0</span>원
+							</div>
+						</div>
+						<button type="button" class="btn btn-primary btn-lg btn-block">구매하기</button>
+					</div>
+
+
+				</div>
+			</div>
 
 		</section>
 
-		<footer class="">Copyright(c) 2020 내집꾸미기. All rights reserved.</footer>
+		<div>
+
+			<footer id='footer' class="bg-dark">
+				<!-- 또 감싸는게 필요한가 봄 -->
+				<div class="container-xl">
+					Copyright(c) 2020 내집꾸미기. All rights reserved.
+				</div>
+			</footer>
+		</div>
 
 	</div>
 
