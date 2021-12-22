@@ -3,6 +3,7 @@
 
 /* ----header---- */
 
+
 .section-header {
     padding-top: 10px;
     margin-right: 15px;
@@ -100,10 +101,20 @@
 
 /* =========== section ============ */
 
+
+#sec0{
+    height:75%
+}
+
+#sec1{
+    /* justify-content: around !important; */
+}
+
 .section {
     /* position: relative; */
-    height: 80%;
+    /* height: 80%; */
     display: flex;
+    /* align-self: flex-end; */
     /* align-items: end; */
 }
 
@@ -134,7 +145,7 @@
     max-width: 350px;
     /* height: 27vh; */
     align-self: end;
-    margin-left: 30px;
+    /* margin-left: 30px; */
     margin-bottom: 50px;
     /* position: fixed;*/
     /* bottom: 50%; */
@@ -143,3 +154,8 @@
 }
 
 /* =================================== */
+
+
+footer{
+
+}
